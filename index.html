@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Priori Labs LLC | Real-Time Signal Processing, Sensor Pipelines &amp; Anomaly Diagnostics</title>
-  <meta name="description" content="A Priori Labs LLC develops physics-informed real-time DSP pipelines, autonomous signal diagnostics, and sensor-agnostic tracking software for radar, sonar, acoustic, and multi-modal sensing systems. Huntsville, AL | CAGE 26YG3." />
-  <meta property="og:title" content="A Priori Labs LLC | Real-Time Signal Intelligence &amp; Edge DSP" />
-  <meta property="og:description" content="Deterministic real-time sensor pipelines, interference &amp; anomaly diagnostics, and multi-modal state estimation for defense and dual-use sensing." />
+  <title>A Priori Labs LLC | Real-Time Signal Processing, Edge DSP &amp; AI-Accelerated Defense Software</title>
+  <meta name="description" content="A Priori Labs LLC delivers physics-informed real-time DSP pipelines, autonomous signal diagnostics, and multi-modal tracking software—combining wave physics with AI-accelerated software engineering for rapid, low-overhead federal R&amp;D. Huntsville, AL | CAGE 26YG3." />
+  <meta property="og:title" content="A Priori Labs LLC | Real-Time Signal Intelligence &amp; AI-Accelerated Engineering" />
+  <meta property="og:description" content="Deterministic real-time sensor pipelines, signal diagnostics, and multi-modal tracking delivered in weeks, not years—without legacy contractor overhead." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://apriori-labs.com/" />
   <link rel="canonical" href="https://apriori-labs.com/" />
@@ -27,14 +27,14 @@
       "addressRegion": "AL",
       "addressCountry": "US"
     },
-    "description": "Physics-informed real-time digital signal processing (DSP) pipelines, autonomous signal diagnostics, and sensor-agnostic tracking software."
+    "description": "Physics-informed real-time digital signal processing (DSP) pipelines, autonomous signal diagnostics, and AI-accelerated defense software engineering."
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <header class="site-header">
@@ -47,6 +47,7 @@
       <nav aria-label="Primary Navigation">
         <ul class="nav-links" id="navLinks">
           <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#velocity">Velocity</a></li>
           <li><a href="#architecture">Architecture</a></li>
           <li><a href="#domains">Domains</a></li>
           <li><a href="#contracting">Contracting</a></li>
@@ -75,14 +76,14 @@
             Physics-informed <span class="text-gradient">real-time signal intelligence</span> for the tactical &amp; industrial edge.
           </h1>
           <p class="hero-lead">
-            A Priori Labs builds deterministic DSP pipelines, autonomous signal integrity diagnostics, and sensor-agnostic tracking software—turning noisy radar, sonar, acoustic, and RF streams into high-confidence decisions.
+            A Priori Labs builds deterministic DSP pipelines, autonomous signal diagnostics, and sensor-agnostic tracking software for radar, sonar, and RF systems—pairing first-principles physics with AI-accelerated software engineering to deliver working capabilities in weeks, not years.
           </p>
           <div class="hero-cta">
             <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-primary" target="_blank" rel="noopener">
               Download Capabilities Statement
             </a>
-            <a href="#contracting" class="btn btn-outline">
-              SAM / CAGE Identifiers
+            <a href="#velocity" class="btn btn-outline">
+              AI-Accelerated Execution
             </a>
           </div>
           <div class="hero-metrics">
@@ -91,8 +92,8 @@
               <div class="metric-value">Real-Time Edge DSP</div>
             </div>
             <div>
-              <div class="metric-label">Sensor Scope</div>
-              <div class="metric-value">Radar &bull; Sonar &bull; Multi-Modal</div>
+              <div class="metric-label">Execution Model</div>
+              <div class="metric-value">Direct &bull; AI-Accelerated</div>
             </div>
             <div>
               <div class="metric-label">CAGE / UEI</div>
@@ -101,12 +102,12 @@
           </div>
         </div>
 
-        <!-- Live Interactive Signal Pipeline Panel -->
-        <div class="dsp-panel" aria-label="Interactive Real-Time Signal Pipeline Simulation">
+        <!-- Live Interactive Signal Pipeline & Target Sandbox -->
+        <div class="dsp-panel" aria-label="Interactive Frequency Domain and Synthetic Target Sandbox">
           <div class="dsp-header">
             <div class="dsp-title">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>STREAM TELEMETRY</span>
+              <span>SYNTHETIC SIGNAL SANDBOX</span>
             </div>
             <div class="dsp-tabs" role="tablist" aria-label="Pipeline Mode">
               <button class="dsp-tab active" data-mode="radar" type="button">RADAR</button>
@@ -114,15 +115,31 @@
               <button class="dsp-tab" data-mode="diag" type="button">DIAGNOSTICS</button>
             </div>
           </div>
+          <div class="dsp-subbar">
+            <span class="dsp-hint">Click plot to inject targets &bull; Click lock to clear</span>
+            <span id="dspScorePill" class="dsp-score-pill">LOCKED: 2/2 &bull; MIN SNR: +21.0 dB</span>
+          </div>
           <div class="dsp-canvas-wrap">
             <canvas id="dspCanvas"></canvas>
           </div>
+          <div class="dsp-controls" aria-label="Sandbox Controls">
+            <div class="sim-btn-group">
+              <button class="sim-btn" id="btnSpawnStealth" type="button" title="Inject a challenging low-SNR contact near clutter">+ Stealth</button>
+              <button class="sim-btn" id="btnSpawnJammer" type="button" title="Inject wideband interference shelf">+ Jammer</button>
+              <button class="sim-btn sim-btn-toggle active" id="btnPriorToggle" type="button" aria-pressed="true" title="Toggle A Priori Physics Clutter &amp; Jammer Suppression">Prior: ON</button>
+              <button class="sim-btn sim-btn-ghost" id="btnResetSim" type="button" title="Reset sandbox to baseline contacts">Reset</button>
+            </div>
+            <button class="sim-btn sim-btn-report" id="btnOpenReport" type="button">
+              Analysis &amp; Code &rarr;
+            </button>
+          </div>
           <div class="dsp-footer">
-            <span id="dspReadout">PIPELINE: 1024-PT DOPPLER // OS-CFAR (Pfa = 1e-5) // LATENCY: 0.42 ms</span>
+            <span id="dspReadout">1024-PT DOPPLER // OS-CFAR (Pfa = 1e-5) // LATENCY: 0.38 ms</span>
             <div class="dsp-legend">
-              <span class="legend-item"><span class="swatch swatch-blue"></span>Spectrum</span>
-              <span class="legend-item"><span class="swatch swatch-slate"></span>Adaptive CFAR</span>
-              <span class="legend-item"><span class="swatch swatch-white"></span>Lock</span>
+              <span class="legend-item"><span class="swatch swatch-blue"></span>PSD (dB)</span>
+              <span class="legend-item"><span class="swatch swatch-slate"></span>OS-CFAR</span>
+              <span class="legend-item"><span class="swatch swatch-white"></span>Locked</span>
+              <span class="legend-item"><span class="swatch swatch-amber"></span>Masked</span>
             </div>
           </div>
         </div>
@@ -192,6 +209,82 @@
               <li>Open-architecture interfaces for COTS &amp; tactical edge systems</li>
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Accelerated Government Execution -->
+    <section id="velocity">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">AI-Accelerated Government Execution</span>
+          <h2>Working software in weeks—without 100-person overhead or year-long paper studies.</h2>
+          <p>
+            Federal research shouldn&rsquo;t spend six to twelve months of administrative burn just to produce static feasibility plots and throwaway scripts. By combining senior DSP and physics architecture with modern AI-assisted software engineering, A Priori Labs delivers verified, field-ready capabilities rapidly and cost-effectively.
+          </p>
+        </div>
+
+        <div class="velocity-compare">
+          <div class="compare-card compare-legacy">
+            <span class="compare-badge badge-muted">CONVENTIONAL CONTRACTING BOTTLENECK</span>
+            <h3>High-Overhead R&amp;D &amp; Multi-Layer Silos</h3>
+            <ul class="compare-list">
+              <li>
+                <strong>6&ndash;12 Month Study Cycles</strong>
+                <span>Slow bureaucratic ramp-up that too often concludes in slide decks and static offline plots—requiring a costly ground-up rewrite before anything runs on real hardware.</span>
+              </li>
+              <li>
+                <strong>15&ndash;100+ Person Handoff Chains</strong>
+                <span>Separate organizational silos across algorithm analysts, C++ porters, QA testers, tooling engineers, and program managers multiply schedule drag and indirect wrap rates.</span>
+              </li>
+              <li>
+                <strong>The Large-Contractor Staffing Trap</strong>
+                <span>Government sponsors either absorb the overhead of sprawling program structures or receive only fractional attention from a small sub-team buried behind management layers.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="compare-card compare-apriori">
+            <span class="compare-badge badge-active">THE A PRIORI EXECUTION MODEL</span>
+            <h3>Direct Engineering + AI-Accelerated Velocity</h3>
+            <ul class="compare-list">
+              <li>
+                <strong>Deployable Code in Days &amp; Weeks</strong>
+                <span>Rapid progression from first-principles mathematics straight to modular C++/Python engines, live operator testbenches, and reproducible Monte Carlo benchmarks.</span>
+              </li>
+              <li>
+                <strong>Multi-Discipline Output, Lean Cost</strong>
+                <span>Disciplined AI-assisted coding and automated test synthesis allow a dedicated principal engineer to deliver the cross-functional software throughput that historically required a 15-person team.</span>
+              </li>
+              <li>
+                <strong>Direct Engineer-to-Mission Tasking</strong>
+                <span>Assign well-scoped software and R&amp;D tasks directly to the engineer building the system—getting exact mission deliverables quickly, affordably, and with zero middle-management friction.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="velocity-workflow">
+          <div class="workflow-item">
+            <div class="workflow-step">01 &bull; Human-Led Physics</div>
+            <h4>Domain-Grounded Architecture</h4>
+            <p>Wave equations, Bayesian estimators, stability bounds, and deterministic latency budgets are designed by human engineering judgment—never delegated to black-box guesswork.</p>
+          </div>
+          <div class="workflow-item">
+            <div class="workflow-step">02 &bull; AI-Assisted Synthesis</div>
+            <h4>10x Implementation Speed</h4>
+            <p>Modern AI coding workflows compress C++20/Python implementation, data-bus adapters, build tooling, and visualization workbenches from months into days.</p>
+          </div>
+          <div class="workflow-item">
+            <div class="workflow-step">03 &bull; Automated Verification</div>
+            <h4>Exhaustive Test Harnesses</h4>
+            <p>Every module ships with AI-accelerated unit suites, synthetic clutter/jamming scenario stress tests, and analytical Pd/Pfa/ROC performance validation.</p>
+          </div>
+          <div class="workflow-item">
+            <div class="workflow-step">04 &bull; Sovereign Hygiene</div>
+            <h4>Clean-Room &amp; Air-Gap Ready</h4>
+            <p>Strict data boundaries ensure sensitive government parameters never touch public cloud models, with fully offline workflows ready for restricted programs.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -291,9 +384,9 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Federal &amp; Prime Contracting</span>
-          <h2>Ready for SBIR/STTR, OTA, subcontracts &amp; direct R&amp;D awards.</h2>
+          <h2>Ready for direct tasking, SBIR/STTR, OTA &amp; agile subcontracts.</h2>
           <p>
-            A Priori Labs LLC maintains an active SAM.gov registration for All Awards and partners with DoD agencies, federal research laboratories, defense primes, and commercial sensor manufacturers.
+            A Priori Labs LLC maintains an active SAM.gov registration for All Awards and partners with DoD agencies, federal research laboratories, defense primes, and commercial sensor manufacturers—structured so sponsors can assign focused R&amp;D and software tasks directly to senior engineering talent without big-contractor overhead.
           </p>
         </div>
 
@@ -377,7 +470,7 @@
           <div>
             <h2>Partner with A Priori Labs</h2>
             <p>
-              Reach out regarding SBIR/STTR topic collaborations, defense prime teaming, custom real-time DSP modules, or sensor pipeline evaluations.
+              Reach out regarding direct software tasking, SBIR/STTR collaborations, defense prime teaming, or rapid real-time DSP and sensor pipeline prototypes.
             </p>
           </div>
           <div class="cta-buttons">
@@ -404,6 +497,80 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2"></script>
+  <!-- Instant Sandbox Analysis & Code Generator Modal -->
+  <div class="modal-backdrop" id="analysisModal" hidden aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow" id="modalEyebrow">SANDBOX TELEMETRY // GENERATED IN &lt; 2 MS</span>
+          <h3 id="modalTitle">Synthetic Scenario Analysis &amp; Executable DSP Code</h3>
+        </div>
+        <button class="modal-close" id="btnCloseModal" type="button" aria-label="Close Analysis Modal">&times;</button>
+      </div>
+
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab active" data-modal-tab="report" type="button">01 // Engineering Analysis</button>
+        <button class="modal-tab" data-modal-tab="python" type="button">02 // Runnable Python (.py)</button>
+        <button class="modal-tab" data-modal-tab="cpp" type="button">03 // Real-Time C++20 (.hpp)</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Tab 1: Engineering Analysis -->
+        <div class="modal-pane active" id="pane-report">
+          <div class="report-kpis" id="reportKpis"></div>
+          <div class="report-Rank" id="reportRankBox"></div>
+          <div class="report-narrative" id="reportNarrative"></div>
+
+          <div class="report-table-wrap">
+            <table class="report-table" aria-label="Synthetic Target Telemetry Breakdown">
+              <thead>
+                <tr>
+                  <th>Contact ID</th>
+                  <th>Frequency / Axis</th>
+                  <th>Injected SNR</th>
+                  <th>CFAR Margin</th>
+                  <th>Pipeline Status</th>
+                </tr>
+              </thead>
+              <tbody id="reportTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="insight-callout">
+            <div>
+              <strong>Reports take seconds. Working software in your hands is the real multiplier.</strong>
+              <p>
+                Conventional defense contracts often spend 6&ndash;12 months of overhead just to hand over a static PDF report around plots like the one you just ran. A Priori Labs can deliver the analytical brief immediately—but our real value is translating first-principles physics <strong>directly into verified, mission-ready code 10x faster</strong>.
+              </p>
+            </div>
+            <div class="insight-actions">
+              <button class="btn btn-primary btn-sm" id="btnJumpToCode" type="button">Inspect Live Code &rarr;</button>
+              <button class="btn btn-outline btn-sm" id="btnCopyReport" type="button">Copy Brief (.md)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Runnable Python -->
+        <div class="modal-pane" id="pane-python" hidden>
+          <div class="code-toolbar">
+            <span>Configured directly from your live sandbox scenario (NumPy / Python 3.10+)</span>
+            <button class="copy-btn" id="btnCopyPython" type="button">COPY PYTHON</button>
+          </div>
+          <pre class="code-block"><code id="codePython"></code></pre>
+        </div>
+
+        <!-- Tab 3: Deterministic C++20 -->
+        <div class="modal-pane" id="pane-cpp" hidden>
+          <div class="code-toolbar">
+            <span>Zero-heap-allocation deterministic edge kernel (C++20 / Embedded ARM &amp; x86)</span>
+            <button class="copy-btn" id="btnCopyCpp" type="button">COPY C++20</button>
+          </div>
+          <pre class="code-block"><code id="codeCpp"></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=6"></script>
 </body>
 </html>
