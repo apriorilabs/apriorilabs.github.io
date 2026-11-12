@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Priori Labs LLC | Real-Time Signal Processing, Sensor Pipelines &amp; Anomaly Diagnostics</title>
+  <meta name="description" content="A Priori Labs LLC develops physics-informed real-time DSP pipelines, autonomous signal diagnostics, and sensor-agnostic tracking software for radar, sonar, acoustic, and multi-modal sensing systems. Huntsville, AL | CAGE 26YG3." />
+  <meta property="og:title" content="A Priori Labs LLC | Real-Time Signal Intelligence &amp; Edge DSP" />
+  <meta property="og:description" content="Deterministic real-time sensor pipelines, interference &amp; anomaly diagnostics, and multi-modal state estimation for defense and dual-use sensing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://apriori-labs.com/" />
+  <link rel="canonical" href="https://apriori-labs.com/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#" class="brand" aria-label="A Priori Labs LLC Home">
+        <img src="assets/favicon.svg" alt="" class="brand-mark" />
+        <span>A Priori Labs <span class="brand-sub">LLC</span></span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#domains">Domains</a></li>
+          <li><a href="#contracting">Contracting</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Capabilities PDF</a>
+        <a href="mailto:info@apriori-labs.com" class="btn btn-primary btn-sm">Contact Us</a>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-controls="navLinks">MENU</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" style="border-top: none;">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Huntsville, AL &bull; CAGE 26YG3 &bull; SAM Active</span>
+          </div>
+          <h1>
+            Physics-informed <span class="text-gradient">real-time signal intelligence</span> for the tactical &amp; industrial edge.
+          </h1>
+          <p class="hero-lead">
+            A Priori Labs builds deterministic DSP pipelines, autonomous signal integrity diagnostics, and sensor-agnostic tracking software—turning noisy radar, sonar, acoustic, and RF streams into high-confidence decisions.
+          </p>
+          <div class="hero-cta">
+            <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+              Download Capabilities Statement
+            </a>
+            <a href="#contracting" class="btn btn-outline">
+              SAM / CAGE Identifiers
+            </a>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <div class="metric-label">Core Focus</div>
+              <div class="metric-value">Real-Time Edge DSP</div>
+            </div>
+            <div>
+              <div class="metric-label">Sensor Scope</div>
+              <div class="metric-value">Radar &bull; Sonar &bull; Multi-Modal</div>
+            </div>
+            <div>
+              <div class="metric-label">CAGE / UEI</div>
+              <div class="metric-value">26YG3 / RG2JV9CZQJC7</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Interactive Signal Pipeline Panel -->
+        <div class="dsp-panel" aria-label="Interactive Real-Time Signal Pipeline Simulation">
+          <div class="dsp-header">
+            <div class="dsp-title">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>STREAM TELEMETRY</span>
+            </div>
+            <div class="dsp-tabs" role="tablist" aria-label="Pipeline Mode">
+              <button class="dsp-tab active" data-mode="radar" type="button">RADAR</button>
+              <button class="dsp-tab" data-mode="sonar" type="button">SONAR</button>
+              <button class="dsp-tab" data-mode="diag" type="button">DIAGNOSTICS</button>
+            </div>
+          </div>
+          <div class="dsp-canvas-wrap">
+            <canvas id="dspCanvas"></canvas>
+          </div>
+          <div class="dsp-footer">
+            <span id="dspReadout">PIPELINE: 1024-PT DOPPLER // OS-CFAR (Pfa = 1e-5) // LATENCY: 0.42 ms</span>
+            <div class="dsp-legend">
+              <span class="legend-item"><span class="swatch swatch-cyan"></span>Spectrum</span>
+              <span class="legend-item"><span class="swatch swatch-amber"></span>Adaptive CFAR</span>
+              <span class="legend-item"><span class="swatch swatch-emerald"></span>Lock</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section id="capabilities">
+      <div class="container">
+        <div class="thesis-band">
+          <div>
+            <div class="thesis-term">Why &ldquo;A Priori&rdquo;?</div>
+            <div class="thesis-phonetic">/ˌeɪ praɪˈɔːraɪ/ &bull; Physics + Estimation</div>
+          </div>
+          <div class="thesis-desc">
+            Purely data-driven black boxes fail when environments shift, clutter spikes, or adversaries contest the spectrum. We pair <strong>first-principles wave physics and statistical priors</strong> with deterministic real-time software—achieving reliable detection, state estimation, and fault isolation under degraded SNR and tight SWaP constraints.
+          </div>
+        </div>
+
+        <div class="section-header">
+          <span class="section-tag">Core Technical Competencies</span>
+          <h2>Modular software engineered from raw waveform ingress to actionable state tracks.</h2>
+          <p>
+            We design reusable software engines, embedded DSP libraries, and system analysis tooling adaptable across acoustic, electromagnetic, and multi-sensor architectures.
+          </p>
+        </div>
+
+        <div class="pillars-grid">
+          <article class="card">
+            <div class="card-index">01 // REAL-TIME SIGNAL PIPELINES</div>
+            <h3>Deterministic Edge DSP</h3>
+            <p>
+              High-throughput, predictable-latency streaming pipelines architected to process raw IQ, acoustic, and array time-series data without frame drops or runtime memory jitter.
+            </p>
+            <ul class="tech-list">
+              <li>Time-frequency &amp; Doppler processing (FFT, STFT, wavelet banks)</li>
+              <li>Adaptive array beamforming &amp; spatial interference nulling</li>
+              <li>Clutter, reverberation &amp; multipath suppression</li>
+              <li>Adaptive detection (CA-CFAR, SO-CFAR, OS-CFAR)</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-index">02 // SIGNAL INTEGRITY &amp; DIAGNOSTICS</div>
+            <h3>Autonomous Anomaly &amp; Interference Analytics</h3>
+            <p>
+              Continuous in-line monitoring of raw sensor feeds to detect jamming, environmental degradation, calibration drift, and weak-signature anomalies before downstream trackers fail.
+            </p>
+            <ul class="tech-list">
+              <li>Real-time RF &amp; acoustic interference characterization &amp; excision</li>
+              <li>Sensor health, channel phase/gain drift &amp; noise-floor auditing</li>
+              <li>Low-SNR transient &amp; weak-signature anomaly isolation</li>
+              <li>Automated empirical Pd / Pfa / ROC performance verification</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-index">03 // MULTI-MODAL ESTIMATION</div>
+            <h3>Sensor-Agnostic Fusion &amp; Tracking</h3>
+            <p>
+              Modular estimation middleware that correlates asynchronous, heterogeneous sensor observations into unified kinematic tracks and confidence-weighted situational awareness.
+            </p>
+            <ul class="tech-list">
+              <li>Non-linear Bayesian state estimation (EKF, UKF, particle filters)</li>
+              <li>Multi-target data association &amp; track lifecycle management</li>
+              <li>Asynchronous out-of-sequence measurement (OOSM) fusion</li>
+              <li>Open-architecture interfaces for COTS &amp; tactical edge systems</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Software-First Architecture</span>
+          <h2>Built for bench-to-field parity across any sensor front end.</h2>
+          <p>
+            Our modular pipeline architecture decouples core mathematical algorithms from vendor-specific hardware, enabling rapid integration onto existing government, defense prime, and commercial COTS sensor platforms.
+          </p>
+        </div>
+
+        <div class="pipeline-flow">
+          <div class="stage-box">
+            <div class="stage-step">Stage 01 &bull; Ingress</div>
+            <h4>Raw Stream Capture</h4>
+            <p>Ingests high-rate IQ baseband, hydrophone/microphone arrays, radar packets, or recorded truth datasets via standardized zero-copy ring buffers.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 02 &bull; Conditioning</div>
+            <h4>DSP &amp; Integrity Guard</h4>
+            <p>Executes matched filtering, adaptive beamforming, clutter/reverberation cancellation, and real-time interference or sensor-fault diagnostics.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 03 &bull; Inference</div>
+            <h4>Detection &amp; Estimation</h4>
+            <p>Applies constant-false-alarm-rate thresholding, kinematic feature extraction, and multi-target Bayesian state tracking across sensor modalities.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 04 &bull; Egress</div>
+            <h4>Actionable Telemetry</h4>
+            <p>Publishes low-latency state tracks, signal health alerts, and diagnostic metrics to operator displays, autonomy stacks, or open C2 buses.</p>
+          </div>
+        </div>
+
+        <div class="principles-strip">
+          <div class="principle-item">
+            <strong>Hardware-Agnostic Modularity</strong>
+            <span>Runs cleanly on embedded ARM, x86 mission computers, GPU edge nodes, or desktop simulation environments.</span>
+          </div>
+          <div class="principle-item">
+            <strong>Physics + Statistical Rigor</strong>
+            <span>Every algorithm is backed by analytical error budgets, Monte Carlo stress testing, and reproducible ROC benchmarking.</span>
+          </div>
+          <div class="principle-item">
+            <strong>Sovereign Air-Gapped Posture</strong>
+            <span>100% U.S. engineering execution capable of fully offline, zero-cloud-egress development and deployment.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Domains -->
+    <section id="domains">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Application Domains</span>
+          <h2>Proven algorithmic roots in wave-based sensing &amp; high-rate telemetry.</h2>
+          <p>
+            While our software core is sensor-agnostic, our deepest heritage spans radar, underwater acoustics, and contested multi-sensor environments.
+          </p>
+        </div>
+
+        <div class="domains-grid">
+          <div class="card">
+            <span class="domain-badge">ELECTROMAGNETIC / RF</span>
+            <h3>Radar &amp; RF Sensing</h3>
+            <p>
+              Pulse-Doppler and FMCW signal processing, micro-Doppler signature extraction, urban/ground clutter mitigation, and electronic protection against co-channel interference for compact COTS and tactical radars.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="domain-badge">UNDERSEA &amp; ACOUSTICS</span>
+            <h3>Sonar &amp; Acoustic Arrays</h3>
+            <p>
+              Passive and active sonar array processing, adaptive beamforming, shallow-water reverberation suppression, narrowband/broadband contact tracking, and terrestrial acoustic array localization.
+            </p>
+          </div>
+
+          <div class="card">
+            <span class="domain-badge">DUAL-USE &amp; T&amp;E</span>
+            <h3>System Diagnostics &amp; Verification</h3>
+            <p>
+              Automated sensor verification workbenches, synthetic clutter/interference injection for pre-range testing, and continuous vibration/acoustic anomaly detection for critical infrastructure and aerospace assets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Government & Commercial Contracting -->
+    <section id="contracting">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Federal &amp; Prime Contracting</span>
+          <h2>Ready for SBIR/STTR, OTA, subcontracts &amp; direct R&amp;D awards.</h2>
+          <p>
+            A Priori Labs LLC maintains an active SAM.gov registration for All Awards and partners with DoD agencies, federal research laboratories, defense primes, and commercial sensor manufacturers.
+          </p>
+        </div>
+
+        <div class="contracting-wrap">
+          <div class="id-table" aria-label="Corporate Registration Identifiers">
+            <div class="id-row">
+              <span class="id-key">Legal Entity Name</span>
+              <span class="id-val">A Priori Labs LLC</span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">CAGE / NCAGE Code</span>
+              <span class="id-val">
+                <strong>26YG3</strong>
+                <button class="copy-btn" type="button" data-copy="26YG3">COPY</button>
+              </span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">Unique Entity ID (UEI)</span>
+              <span class="id-val">
+                <strong>RG2JV9CZQJC7</strong>
+                <button class="copy-btn" type="button" data-copy="RG2JV9CZQJC7">COPY</button>
+              </span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">SAM.gov Registration</span>
+              <span class="id-val" style="color: var(--accent-emerald);">Active &bull; All Awards</span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">Business Structure</span>
+              <span class="id-val">U.S.-Owned Small Business (LLC)</span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">Location</span>
+              <span class="id-val">Huntsville Metro (Harvest), AL</span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">Security &amp; Compliance</span>
+              <span class="id-val">U.S. Citizen Principal &bull; NIST SP 800-171 Aligned</span>
+            </div>
+            <div class="id-row">
+              <span class="id-key">Point of Contact</span>
+              <span class="id-val">
+                Ryan Gubert &bull; info@apriori-labs.com
+                <button class="copy-btn" type="button" data-copy="info@apriori-labs.com">COPY</button>
+              </span>
+            </div>
+          </div>
+
+          <div class="naics-panel">
+            <h3>NAICS Classifications</h3>
+            <ul class="naics-list">
+              <li>
+                <span class="naics-code">541715</span>
+                <span>R&amp;D in the Physical, Engineering, and Life Sciences (Primary SBIR/STTR)</span>
+              </li>
+              <li>
+                <span class="naics-code">541330</span>
+                <span>Engineering Services (Defense, Maritime &amp; Aerospace Sensor Systems)</span>
+              </li>
+              <li>
+                <span class="naics-code">541511</span>
+                <span>Custom Computer Programming Services (Real-Time DSP &amp; Scientific Software)</span>
+              </li>
+              <li>
+                <span class="naics-code">541512</span>
+                <span>Computer Systems Design Services (Edge Sensor &amp; Fusion Architectures)</span>
+              </li>
+            </ul>
+            <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-primary" style="width: 100%;" target="_blank" rel="noopener">
+              Download 1-Page Capabilities PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section id="contact">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h2>Partner with A Priori Labs</h2>
+            <p>
+              Reach out regarding SBIR/STTR topic collaborations, defense prime teaming, custom real-time DSP modules, or sensor pipeline evaluations.
+            </p>
+          </div>
+          <div class="cta-buttons">
+            <a href="mailto:info@apriori-labs.com?subject=A%20Priori%20Labs%20Inquiry" class="btn btn-primary">
+              Email info@apriori-labs.com
+            </a>
+            <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+              View Capabilities Brief
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>A Priori Labs LLC</strong> &bull; Huntsville Metro, Alabama &bull; <a href="mailto:info@apriori-labs.com" style="color: var(--accent-cyan);">info@apriori-labs.com</a>
+      </div>
+      <div class="footer-meta">
+        CAGE: 26YG3 &nbsp;|&nbsp; UEI: RG2JV9CZQJC7 &nbsp;|&nbsp; &copy; 2026 A Priori Labs LLC
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
