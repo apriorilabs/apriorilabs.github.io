@@ -194,12 +194,12 @@
     ctx.lineTo(0, h);
     ctx.closePath();
     const grad = ctx.createLinearGradient(0, 0, 0, h);
-    grad.addColorStop(0, 'rgba(34, 211, 238, 0.25)');
-    grad.addColorStop(1, 'rgba(34, 211, 238, 0.01)');
+    grad.addColorStop(0, 'rgba(96, 165, 250, 0.26)');
+    grad.addColorStop(1, 'rgba(96, 165, 250, 0.01)');
     ctx.fillStyle = grad;
     ctx.fill();
 
-    // Adaptive CFAR threshold curve (dashed amber)
+    // Adaptive CFAR threshold curve (dashed frost-slate)
     ctx.beginPath();
     ctx.setLineDash([5, 4]);
     for (let i = 0; i < numBins; i++) {
@@ -208,12 +208,12 @@
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = '#f59e0b';
+    ctx.strokeStyle = '#94a3b8';
     ctx.lineWidth = 1.5;
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // Primary PSD / Beamformer curve (cyan)
+    // Primary PSD / Beamformer curve (crisp aerospace blue)
     ctx.beginPath();
     for (let i = 0; i < numBins; i++) {
       const x = (i / (numBins - 1)) * w;
@@ -221,7 +221,7 @@
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = '#22d3ee';
+    ctx.strokeStyle = '#60a5fa';
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -233,15 +233,15 @@
       if (power[binIdx] > threshold[binIdx]) {
         const px = (binIdx / (numBins - 1)) * w;
         const py = dbToY(power[binIdx]);
-        const markerColor = pk.isAnomaly ? '#f59e0b' : '#10b981';
+        const markerColor = pk.isAnomaly ? '#fbbf24' : '#f8fafc';
 
         ctx.beginPath();
         ctx.arc(px, py, 4.5, 0, Math.PI * 2);
         ctx.fillStyle = markerColor;
         ctx.fill();
 
-        ctx.strokeStyle = markerColor;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = pk.isAnomaly ? 'rgba(251, 191, 36, 0.65)' : 'rgba(147, 197, 253, 0.75)';
+        ctx.lineWidth = 1.25;
         ctx.beginPath();
         ctx.arc(px, py, 9, 0, Math.PI * 2);
         ctx.stroke();
