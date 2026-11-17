@@ -528,7 +528,7 @@
 
   async function loadPrioriWasm() {
     try {
-      const resp = await fetch('assets/priori_core.wasm');
+      const resp = await fetch('assets/priori_core.wasm?v=19');
       const bytes = await resp.arrayBuffer();
       const { instance } = await WebAssembly.instantiate(bytes, {});
       const exp = instance.exports;
@@ -800,7 +800,8 @@
   }
 
   function recordTrails() {
-    for (const tgt of targets) {
+    for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
       tgt.trail.push({ x: tgt.x, z: tgt.z });
       tgt.estTrail.push({ x: tgt.estX, z: tgt.estZ, status: tgt.status });
       if (tgt.trail.length > 42) tgt.trail.shift();
@@ -868,7 +869,8 @@
   function prewarmSimulation() {
     wfCtx.fillStyle = isDaylight ? '#eaeff6' : '#050811';
     wfCtx.fillRect(0, 0, NUM_BINS, WF_ROWS);
-    for (const tgt of targets) {
+    for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
       tgt.trail = [];
       tgt.estTrail = [];
     }
@@ -1097,7 +1099,8 @@
     let linkedTarget = null;
     if (hoverInfo && hoverInfo.target) linkedTarget = hoverInfo.target;
 
-    for (const tgt of targets) {
+    for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
       const groundY = terrainHeight(tgt.x, tgt.z, currentMode);
       const pGround = project3D(tgt.x, tgt.z, groundY, w, theaterH);
       const pTrue = project3D(tgt.x, tgt.z, groundY + tgt.alt, w, theaterH);
@@ -1208,8 +1211,10 @@
       const turnBadge = tgt.turnG >= 3.8 ? ` • ${tgt.turnG.toFixed(1)}G TURN` : '';
       const tag = `${tgt.id}: ${stateWord} (${tgt.errMeters.toFixed(0)}m)${turnBadge}`;
       const ttw = ctx.measureText(tag).width + 10;
-      const ttx = Math.max(6, Math.min(w - ttw - 6, pTrue.sx + 11));
-      const tty = Math.max(46, Math.min(theaterH - 20, pTrue.sy - 15));
+      const prefX = tIdx % 2 === 0 ? pTrue.sx - ttw - 11 : pTrue.sx + 11;
+      const prefY = tIdx % 2 === 0 ? pTrue.sy + 4 : pTrue.sy - 18;
+      const ttx = Math.max(6, Math.min(w - ttw - 6, prefX));
+      const tty = Math.max(46, Math.min(theaterH - 18, prefY));
 
       ctx.fillStyle = isDaylight ? 'rgba(255, 255, 255, 0.92)' : 'rgba(6, 11, 22, 0.90)';
       ctx.strokeStyle = stateColor;
@@ -1284,7 +1289,8 @@
     ctx.fillStyle = isDaylight ? 'rgba(2, 132, 199, 0.14)' : 'rgba(56, 189, 248, 0.14)';
     ctx.fill();
 
-    for (const tgt of targets) {
+    for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
       const px = tgt.liveBin * w;
       const py = dbToY(tgt.peakDb);
       ctx.fillStyle =
@@ -1345,7 +1351,8 @@
 
     let nearTgt = null;
     if (my <= theaterH) {
-      for (const tgt of targets) {
+      for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
         if (Math.hypot(mx - (tgt.screenX || 0), my - (tgt.screenY || 0)) < 22) {
           nearTgt = tgt;
           break;
@@ -1354,7 +1361,8 @@
       hoverInfo = { mx, my, inTheater: true, target: nearTgt };
     } else {
       const bin = mx / Math.max(1, rect.width);
-      for (const tgt of targets) {
+      for (let tIdx = 0; tIdx < targets.length; tIdx++) {
+      const tgt = targets[tIdx];
         if (Math.abs(tgt.liveBin - bin) < 0.038) {
           nearTgt = tgt;
           break;
