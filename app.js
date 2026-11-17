@@ -1086,9 +1086,14 @@
         ctx.stroke();
         ctx.restore();
       }
-      ctx.font = '9px "JetBrains Mono", Consolas, monospace';
+      ctx.font = '600 8.5px "JetBrains Mono", Consolas, monospace';
+      const jamTag = priorEnabled ? `${jam.id} [NULL -38dB]` : `${jam.id} [JAMMING]`;
+      const jtw = ctx.measureText(jamTag).width + 8;
+      const jtx = Math.max(8, Math.min(w - jtw - 8, jC.sx - jtw * 0.5));
+      ctx.fillStyle = isDaylight ? 'rgba(255, 255, 255, 0.88)' : 'rgba(6, 10, 20, 0.88)';
+      ctx.fillRect(jtx, 29, jtw, 14);
       ctx.fillStyle = isDaylight ? '#b45309' : '#fbbf24';
-      ctx.fillText(priorEnabled ? `${jam.id} [NULL -38dB]` : `${jam.id} [JAMMING]`, jC.sx - 34, Math.max(28, jC.sy));
+      ctx.fillText(jamTag, jtx + 4, 39);
     }
 
     // 5. Render 3D Targets, Altitude Drop-Stems, True vs. Estimated Tracker Trails & Covariance Ellipses
@@ -1178,11 +1183,16 @@
 
       drawMil2525Symbol(pAir.sx, pAir.sy, 7.2, tgt.locked, isDaylight);
 
-      // Tactical Callout Label
+      // Tactical Callout Label with subtle HUD backing pill
       ctx.font = '600 9.5px "JetBrains Mono", Consolas, monospace';
       const tag = `${tgt.id} (${tgt.errMeters.toFixed(0)}m)`;
+      const ttw = ctx.measureText(tag).width + 8;
+      const ttx = Math.min(w - ttw - 6, pAir.sx + 9);
+      const tty = Math.max(46, pAir.sy - 14);
+      ctx.fillStyle = isDaylight ? 'rgba(255, 255, 255, 0.82)' : 'rgba(6, 11, 22, 0.82)';
+      ctx.fillRect(ttx, tty, ttw, 14);
       ctx.fillStyle = isDaylight ? '#0f172a' : '#f1f5f9';
-      ctx.fillText(tag, pAir.sx + 10, pAir.sy - 6);
+      ctx.fillText(tag, ttx + 4, tty + 10.5);
     }
 
     // Sensor Origin Array Marker
