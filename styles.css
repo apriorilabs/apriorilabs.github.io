@@ -1700,6 +1700,127 @@ section {
   margin-top: 18px;
   padding-top: 14px;
   border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tier-license-link {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tier-license-link:hover {
+  color: var(--accent-ice);
+}
+
+/* Universal Interactive Inquiry & SDK Request Modal */
+.inq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.inq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.inq-field.full {
+  grid-column: 1 / -1;
+}
+
+.inq-field label {
+  font-family: var(--font-mono);
+  font-size: 0.71rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.inq-input,
+.inq-select,
+.inq-textarea {
+  background: rgba(5, 9, 18, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 7px;
+  padding: 9px 12px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  width: 100%;
+}
+
+.inq-input:focus,
+.inq-select:focus,
+.inq-textarea:focus {
+  outline: none;
+  border-color: var(--accent-ice);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.16);
+}
+
+.inq-textarea {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.48;
+  resize: vertical;
+  min-height: 112px;
+}
+
+.inq-direct-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: rgba(14, 24, 43, 0.88);
+  border: 1px solid rgba(147, 197, 253, 0.28);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+.inq-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.inq-status-toast {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #34d399;
+  min-height: 1.2em;
+}
+
+/* License Page Document Box */
+.license-doc-box {
+  background: rgba(6, 10, 20, 0.94);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.license-pre {
+  padding: 24px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
 }
 
 /* Contact CTA Box */
@@ -1871,8 +1992,10 @@ section {
     text-align: left;
   }
 
-  .report-kpis {
-    grid-template-columns: repeat(2, 1fr);
+  .report-kpis,
+  .inq-grid,
+  .inq-actions-grid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -90,6 +90,283 @@
     });
   });
 
+  // Copy full license text button on license.html
+  const btnCopyLicense = document.getElementById('btnCopyLicense');
+  const evalLicenseText = document.getElementById('evalLicenseText');
+  if (btnCopyLicense && evalLicenseText) {
+    btnCopyLicense.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(evalLicenseText.textContent || '');
+        const prev = btnCopyLicense.textContent;
+        btnCopyLicense.textContent = 'COPIED LICENSE TEXT!';
+        setTimeout(() => {
+          btnCopyLicense.textContent = prev;
+        }, 1800);
+      } catch {
+        // Fallback no-op
+      }
+    });
+  }
+
+  // =========================================================================
+  // Universal Interactive SDK Request & Contracting Inquiry Modal
+  // (Prevents silent failure when OS has no default desktop mailto: handler)
+  // =========================================================================
+  const inquiryTracks = {
+    eval: {
+      eyebrow: 'TIER 01 // NO-COST LAB & IRAD EVALUATION REQUEST',
+      title: 'Request PrioriSDK v0.8 Lab & IRAD Evaluation Bundle',
+      subject: 'PrioriSDK v0.8 — No-Cost Lab & IRAD Evaluation Request',
+      defaultEnv: 'RHEL 8/9 Linux ELF (x86_64 + Vulkan GPU)',
+      promptNote:
+        'Please send the non-viral PrioriSDK v0.8 Lab & IRAD Evaluation archive (C99/C++23 headers, Slang shaders, 4 reference workbenches, and LICENSE-EVALUATION.txt).'
+    },
+    commercial: {
+      eyebrow: 'TIER 02 // COMMERCIAL DEPLOYMENT & PRIORICERT RMF',
+      title: 'Program Deployment License & PrioriCert RMF Inquiry',
+      subject: 'PrioriSDK — Program Deployment & PrioriCert RMF Licensing Inquiry',
+      defaultEnv: 'Fielded Program / OEM Deployment (Linux ELF / Windows PE)',
+      promptNote:
+        'We would like to discuss program-scoped commercial deployment licensing (DFARS 227.7202 / FAR 52.227-19) and the PrioriCert RMF evidence package.'
+    },
+    teaming: {
+      eyebrow: 'TIER 03 // PRIORICORE IP, SBIR & PRIME SUBCONTRACTING',
+      title: 'Scope Prime Teaming, SBIR/STTR or Sensor Integration',
+      subject: 'A Priori Labs — Prime Teaming / SBIR / PrioriCore Integration Inquiry',
+      defaultEnv: 'Real-Time Radar / EW / Acoustic Sensor Pipeline',
+      promptNote:
+        'We would like to discuss teaming, direct R&D tasking, or PrioriCore physics/DSP integration for an upcoming sensor milestone or solicitation.'
+    },
+    general: {
+      eyebrow: 'DIRECT CONTACT // CAGE 26YG3 • HUNTSVILLE, AL',
+      title: 'Contact A Priori Labs Engineering & Contracting',
+      subject: 'A Priori Labs LLC — Technical / Contracting Inquiry',
+      defaultEnv: 'C++23 Edge DSP / Tracking / PrioriEngine',
+      promptNote:
+        'Reaching out to connect regarding real-time DSP, tracking, or PrioriEngine capabilities.'
+    }
+  };
+
+  const inqBackdrop = document.createElement('div');
+  inqBackdrop.className = 'modal-backdrop';
+  inqBackdrop.id = 'inquiryModal';
+  inqBackdrop.hidden = true;
+  inqBackdrop.setAttribute('aria-hidden', 'true');
+  inqBackdrop.innerHTML = `
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="inqModalTitle" style="max-width: 680px;">
+      <div class="modal-header">
+        <div>
+          <span class="modal-eyebrow" id="inqEyebrow">TIER 01 // NO-COST LAB &amp; IRAD EVALUATION REQUEST</span>
+          <h3 id="inqModalTitle">Request PrioriSDK v0.8 Lab &amp; IRAD Evaluation Bundle</h3>
+        </div>
+        <button class="modal-close" id="btnCloseInq" type="button" aria-label="Close Inquiry Modal">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 20px 24px 24px; overflow-y: auto;">
+        <div class="inq-direct-strip">
+          <div>
+            <strong>Direct POC:</strong> Ryan Gubert &bull; <span style="color: var(--accent-ice);">info@apriori-labs.com</span> &bull; <a href="tel:+17347512203" style="color: var(--text-primary); text-decoration: underline;">(734) 751-2203</a>
+          </div>
+          <button class="copy-btn" type="button" id="btnCopyInqEmail">COPY EMAIL</button>
+        </div>
+
+        <div class="inq-grid">
+          <div class="inq-field full">
+            <label for="inqTrackSelect">Inquiry Track</label>
+            <select id="inqTrackSelect" class="inq-select">
+              <option value="eval">Tier 01 — No-Cost Lab &amp; IRAD SDK Evaluation ($0, Non-Viral)</option>
+              <option value="commercial">Tier 02 — Commercial / Program License &amp; PrioriCert RMF</option>
+              <option value="teaming">Tier 03 — Prime Subcontracting, SBIR/STTR &amp; PrioriCore IP</option>
+              <option value="general">General Engineering &amp; Contracting Inquiry</option>
+            </select>
+          </div>
+          <div class="inq-field">
+            <label for="inqName">Your Name &amp; Role</label>
+            <input id="inqName" class="inq-input" type="text" placeholder="e.g. Dr. Jane Doe, Lead DSP Engineer" />
+          </div>
+          <div class="inq-field">
+            <label for="inqOrg">Organization / Lab / Prime</label>
+            <input id="inqOrg" class="inq-input" type="text" placeholder="e.g. NSWC / DEVCOM / Defense Prime / Univ" />
+          </div>
+          <div class="inq-field full">
+            <label for="inqEnv">Target OS, GPU &amp; Sensor Modality</label>
+            <input id="inqEnv" class="inq-input" type="text" value="RHEL 8/9 Linux ELF (x86_64 + Vulkan GPU)" />
+          </div>
+          <div class="inq-field full">
+            <label for="inqPreview">Ready-to-Send Request Brief (Editable)</label>
+            <textarea id="inqPreview" class="inq-textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="inq-actions-grid">
+          <button class="btn btn-primary btn-sm" type="button" id="btnCopyFullInq">
+            1-Click Copy Request Brief
+          </button>
+          <a class="btn btn-outline btn-sm" id="btnGmailWeb" href="#" target="_blank" rel="noopener">
+            Open in Gmail Web &nearr;
+          </a>
+          <a class="btn btn-outline btn-sm" id="btnOutlookWeb" href="#" target="_blank" rel="noopener">
+            Open in Outlook / M365 Web &nearr;
+          </a>
+          <a class="btn btn-outline btn-sm" id="btnMailtoLaunch" href="#">
+            Open Default Mail App
+          </a>
+        </div>
+
+        <div class="inq-status-toast" id="inqToast" role="status" aria-live="polite"></div>
+
+        <div style="margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.78rem; color: var(--text-muted);">
+          <span>CAGE: <strong>26YG3</strong> &bull; UEI: <strong>RG2JV9CZQJC7</strong></span>
+          <a href="license.html" style="color: var(--accent-ice); font-family: var(--font-mono); font-size: 0.75rem; text-decoration: underline;">
+            Read Full Evaluation &amp; DFARS License Terms &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(inqBackdrop);
+
+  const inqEyebrow = document.getElementById('inqEyebrow');
+  const inqModalTitle = document.getElementById('inqModalTitle');
+  const inqTrackSelect = document.getElementById('inqTrackSelect');
+  const inqName = document.getElementById('inqName');
+  const inqOrg = document.getElementById('inqOrg');
+  const inqEnv = document.getElementById('inqEnv');
+  const inqPreview = document.getElementById('inqPreview');
+  const inqToast = document.getElementById('inqToast');
+  const btnCloseInq = document.getElementById('btnCloseInq');
+  const btnCopyInqEmail = document.getElementById('btnCopyInqEmail');
+  const btnCopyFullInq = document.getElementById('btnCopyFullInq');
+  const btnGmailWeb = document.getElementById('btnGmailWeb');
+  const btnOutlookWeb = document.getElementById('btnOutlookWeb');
+  const btnMailtoLaunch = document.getElementById('btnMailtoLaunch');
+
+  let previewManuallyEdited = false;
+
+  function updateInquiryLinks() {
+    const key = (inqTrackSelect && inqTrackSelect.value) || 'eval';
+    const trk = inquiryTracks[key] || inquiryTracks.eval;
+    const subj = trk.subject;
+    const body = (inqPreview && inqPreview.value) || '';
+    const encTo = encodeURIComponent('info@apriori-labs.com');
+    const encSubj = encodeURIComponent(subj);
+    const encBody = encodeURIComponent(body);
+
+    if (btnGmailWeb) {
+      btnGmailWeb.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSubj}&body=${encBody}`;
+    }
+    if (btnOutlookWeb) {
+      btnOutlookWeb.href = `https://outlook.office.com/mail/deeplink/compose?to=${encTo}&subject=${encSubj}&body=${encBody}`;
+    }
+    if (btnMailtoLaunch) {
+      btnMailtoLaunch.href = `mailto:info@apriori-labs.com?subject=${encSubj}&body=${encBody}`;
+    }
+  }
+
+  function rebuildInquiryMessage(resetEnv) {
+    const key = (inqTrackSelect && inqTrackSelect.value) || 'eval';
+    const trk = inquiryTracks[key] || inquiryTracks.eval;
+    if (inqEyebrow) inqEyebrow.textContent = trk.eyebrow;
+    if (inqModalTitle) inqModalTitle.textContent = trk.title;
+    if (resetEnv && inqEnv) inqEnv.value = trk.defaultEnv;
+
+    if (!previewManuallyEdited && inqPreview) {
+      const nameVal = (inqName && inqName.value.trim()) || '[Your Name / Title]';
+      const orgVal = (inqOrg && inqOrg.value.trim()) || '[Lab / Command / Company]';
+      const envVal = (inqEnv && inqEnv.value.trim()) || trk.defaultEnv;
+      inqPreview.value =
+        `Hello Ryan / A Priori Labs,\n\n` +
+        `${trk.promptNote}\n\n` +
+        `- Name / Role: ${nameVal}\n` +
+        `- Organization: ${orgVal}\n` +
+        `- Target Platform / Sensor Focus: ${envVal}\n\n` +
+        `Thank you!`;
+    }
+    updateInquiryLinks();
+  }
+
+  function inferTrackFromHref(el) {
+    const explicit = el.getAttribute('data-inquiry');
+    if (explicit && inquiryTracks[explicit]) return explicit;
+    const href = (el.getAttribute('href') || '').toLowerCase();
+    if (href.includes('commercial') || href.includes('prioricert') || href.includes('program')) return 'commercial';
+    if (href.includes('prioricore') || href.includes('teaming') || href.includes('integration')) return 'teaming';
+    if (href.includes('eval') || href.includes('priorisdk')) return 'eval';
+    return 'general';
+  }
+
+  function openInquiryModal(trackKey) {
+    previewManuallyEdited = false;
+    if (inqTrackSelect) inqTrackSelect.value = inquiryTracks[trackKey] ? trackKey : 'general';
+    if (inqToast) inqToast.textContent = '';
+    rebuildInquiryMessage(true);
+    inqBackdrop.hidden = false;
+    inqBackdrop.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeInquiryModal() {
+    inqBackdrop.hidden = true;
+    inqBackdrop.setAttribute('aria-hidden', 'true');
+  }
+
+  // Upgrade all CTA buttons (a.btn[href^="mailto:"] and [data-inquiry]) to open the interactive modal
+  document.querySelectorAll('a.btn[href^="mailto:"], [data-inquiry]').forEach((el) => {
+    if (el.id === 'btnMailtoLaunch') return;
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openInquiryModal(inferTrackFromHref(el));
+    });
+  });
+
+  if (inqTrackSelect) {
+    inqTrackSelect.addEventListener('change', () => {
+      previewManuallyEdited = false;
+      rebuildInquiryMessage(true);
+    });
+  }
+  [inqName, inqOrg, inqEnv].forEach((inp) => {
+    if (inp) inp.addEventListener('input', () => rebuildInquiryMessage(false));
+  });
+  if (inqPreview) {
+    inqPreview.addEventListener('input', () => {
+      previewManuallyEdited = true;
+      updateInquiryLinks();
+    });
+  }
+  if (btnCloseInq) btnCloseInq.addEventListener('click', closeInquiryModal);
+  inqBackdrop.addEventListener('click', (e) => {
+    if (e.target === inqBackdrop) closeInquiryModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !inqBackdrop.hidden) closeInquiryModal();
+  });
+
+  if (btnCopyInqEmail) {
+    btnCopyInqEmail.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('info@apriori-labs.com');
+        btnCopyInqEmail.textContent = 'COPIED!';
+        if (inqToast) inqToast.textContent = '✓ Copied info@apriori-labs.com to clipboard.';
+        setTimeout(() => {
+          btnCopyInqEmail.textContent = 'COPY EMAIL';
+        }, 1600);
+      } catch {}
+    });
+  }
+
+  if (btnCopyFullInq) {
+    btnCopyFullInq.addEventListener('click', async () => {
+      const key = (inqTrackSelect && inqTrackSelect.value) || 'eval';
+      const trk = inquiryTracks[key] || inquiryTracks.eval;
+      const fullClip = `To: info@apriori-labs.com\nSubject: ${trk.subject}\n\n${inqPreview ? inqPreview.value : ''}`;
+      try {
+        await navigator.clipboard.writeText(fullClip);
+        if (inqToast) {
+          inqToast.textContent = '✓ Full request copied to clipboard! Paste into any email client and send to info@apriori-labs.com.';
+        }
+      } catch {}
+    });
+  }
+
   // =========================================================================
   // Interactive Frequency-Domain PSD + Waterfall + Synthetic Target Sandbox
   // =========================================================================
