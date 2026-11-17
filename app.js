@@ -33,6 +33,63 @@
     });
   });
 
+  // PrioriEngine 5-Tab Project Showcase Switcher + Theater / UX Sub-Switchers (runs on engine.html & index.html)
+  const engineTabs = document.querySelectorAll('.engine-tab');
+  const enginePanes = {
+    forensics: document.getElementById('engine-pane-forensics'),
+    rf: document.getElementById('engine-pane-rf'),
+    sda: document.getElementById('engine-pane-sda'),
+    asw: document.getElementById('engine-pane-asw'),
+    code: document.getElementById('engine-pane-code')
+  };
+
+  engineTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const targetKey = tab.getAttribute('data-engine-tab');
+      engineTabs.forEach((t) => t.classList.toggle('active', t === tab));
+      Object.entries(enginePanes).forEach(([key, pane]) => {
+        if (!pane) return;
+        const isMatch = key === targetKey;
+        pane.classList.toggle('active', isMatch);
+        pane.hidden = !isMatch;
+      });
+    });
+  });
+
+  const aswSubBtns = document.querySelectorAll('[data-asw-src]');
+  const aswPreviewImg = document.getElementById('aswPreviewImg');
+  const aswPreviewLink = document.getElementById('aswPreviewLink');
+  const aswTheaterCaption = document.getElementById('aswTheaterCaption');
+
+  aswSubBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.getAttribute('data-asw-src');
+      const cap = btn.getAttribute('data-asw-caption');
+      if (!src) return;
+      aswSubBtns.forEach((b) => b.classList.toggle('active', b === btn));
+      if (aswPreviewImg) aswPreviewImg.src = src;
+      if (aswPreviewLink) aswPreviewLink.href = src;
+      if (aswTheaterCaption && cap) aswTheaterCaption.textContent = cap;
+    });
+  });
+
+  const spectraSubBtns = document.querySelectorAll('[data-spectra-src]');
+  const spectraPreviewImg = document.getElementById('spectraPreviewImg');
+  const spectraPreviewLink = document.getElementById('spectraPreviewLink');
+  const spectraModeCaption = document.getElementById('spectraModeCaption');
+
+  spectraSubBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const src = btn.getAttribute('data-spectra-src');
+      const cap = btn.getAttribute('data-spectra-caption');
+      if (!src) return;
+      spectraSubBtns.forEach((b) => b.classList.toggle('active', b === btn));
+      if (spectraPreviewImg) spectraPreviewImg.src = src;
+      if (spectraPreviewLink) spectraPreviewLink.href = src;
+      if (spectraModeCaption && cap) spectraModeCaption.textContent = cap;
+    });
+  });
+
   // =========================================================================
   // Interactive Frequency-Domain PSD + Waterfall + Synthetic Target Sandbox
   // =========================================================================
@@ -70,6 +127,7 @@
       fftSize: 1024,
       pfa: '1e-5',
       latencyMs: 0.38,
+      cppKernelUs: 3.2,
       axisMin: -500,
       axisMax: 500,
       axisUnit: 'Hz',
@@ -85,6 +143,7 @@
       fftSize: 2048,
       pfa: '1e-4',
       latencyMs: 0.54,
+      cppKernelUs: 6.8,
       axisMin: 0,
       axisMax: 2000,
       axisUnit: 'Hz',
@@ -100,6 +159,7 @@
       fftSize: 1024,
       pfa: '1e-5',
       latencyMs: 0.34,
+      cppKernelUs: 3.1,
       axisMin: 2400,
       axisMax: 2500,
       axisUnit: 'MHz',
@@ -150,8 +210,8 @@
   function updateReadoutBar() {
     const cfg = modeConfigs[currentMode];
     if (!readoutEl || !cfg) return;
-    const priorTag = priorEnabled ? 'PRIOR EXCISION: ON' : 'PRIOR EXCISION: OFF';
-    readoutEl.textContent = `${cfg.fftSize}-PT FFT // OS-CFAR (Pfa=${cfg.pfa}) // ${priorTag} // ${cfg.latencyMs.toFixed(2)} ms`;
+    const priorTag = priorEnabled ? 'PRIOR: ON' : 'PRIOR: OFF';
+    readoutEl.textContent = `${cfg.fftSize}-PT FFT + OS-CFAR (${priorTag}) // LIVE JS SIM: ${cfg.latencyMs.toFixed(2)} ms • C++23 SIMD: ~${cfg.cppKernelUs.toFixed(1)} µs`;
   }
 
   updateReadoutBar();
@@ -824,7 +884,7 @@
   });
 
   if (btnJumpToCode) {
-    btnJumpToCode.addEventListener('click', () => switchModalTab('python'));
+    btnJumpToCode.addEventListener('click', () => switchModalTab('cpp'));
   }
 
   function buildScenarioArtifacts() {
@@ -853,8 +913,8 @@
           <div class="kpi-val">${suppressionDb}</div>
         </div>
         <div class="kpi-box">
-          <div class="kpi-label">Frame Latency</div>
-          <div class="kpi-val">${cfg.latencyMs.toFixed(2)} ms</div>
+          <div class="kpi-label">C++23 SIMD Est.</div>
+          <div class="kpi-val">~${cfg.cppKernelUs.toFixed(1)} &mu;s <span style="font-size:0.68rem;color:var(--text-muted);">(JS: ${cfg.latencyMs.toFixed(2)} ms)</span></div>
         </div>
       `;
     }
@@ -928,78 +988,87 @@
 | :--- | :--- | :--- | :--- | :--- |
 ${mdRows || '| None | — | — | — | — |'}
 
-> Generated instantaneously in browser. Contact info@apriori-labs.com to turn mission sensor requirements directly into verified C++20 / Python edge pipelines.`;
+> Generated instantaneously in browser. Contact info@apriori-labs.com to turn mission sensor requirements directly into verified C++23 / PrioriSDK tactical edge pipelines.`;
 
-    // Generate Live Runnable Python Code parameterized by user's exact sandbox session
-    const pyTargets = targets
+    // Generate Live Zero-Dependency PrioriSDK v0.8 C++23 Console App parameterized by user's sandbox session
+    const sdkTargets = targets
       .map(
         (t) =>
-          `    {"id": "${t.id}", "bin_norm": ${(t.liveBin ?? t.baseBin).toFixed(3)}, "snr_db": ${t.snr.toFixed(1)}}`
+          `        {"${t.id}", ${(t.liveBin ?? t.baseBin).toFixed(3)}f, ${t.snr.toFixed(1)}f}`
       )
       .join(',\n');
 
-    const pyJammers = jammers
-      .map((j) => `    {"id": "${j.id}", "center": ${j.center.toFixed(3)}, "power_db": ${j.power.toFixed(1)}}`)
+    const sdkJammers = jammers
+      .map((j) => `        {"${j.id}", ${j.center.toFixed(3)}f, ${j.power.toFixed(1)}f}`)
       .join(',\n');
 
-    const pythonCode = `"""
-A Priori Labs LLC — Auto-Configured ${cfg.name} Pipeline
-Generated directly from your interactive sandbox session.
-Run locally:  pip install numpy && python apriori_sandbox_kernel.py
-"""
-import numpy as np
+    const envEnum = currentMode === 'sonar' ? 'PRIORI_ENV_MARITIME_OCEAN' : 'PRIORI_ENV_COASTAL_RADAR';
+    const cmapEnum = currentMode === 'sonar' ? 'PRIORI_CMAP_VIRIDIS_SONAR' : 'PRIORI_CMAP_INFERNO_EW';
 
-FFT_BINS = ${cfg.fftSize}
-PRIOR_CONDITIONING = ${priorEnabled ? 'True' : 'False'}   # ${cfg.priorDesc}
-GUARD_CELLS, TRAIN_CELLS = 4, 16
-OS_PERCENTILE, THRESH_OFFSET_DB = 65.0, 9.2
+    const prioriSdkAppCode = `// A Priori Labs LLC — Auto-Configured PrioriSDK v0.8 Console (${cfg.name})
+// Zero 3rd-party libraries | Zero localhost IPC sockets | Linux ELF & Windows PE
+#include <priori/priori.hpp>
+#include <priori/priori_dsp.hpp>
+#include <priori/priori_lab.hpp>
+#include <cmath>
 
-CONTACTS = [
-${pyTargets || '    # Inject targets on the spectrum plot to populate'}
-]
-JAMMERS = [
-${pyJammers || '    # Click "+ Jammer" in sandbox to inject wideband interference'}
-]
+struct SandboxContact { const char* id; float bin_norm; float snr_db; };
+static constexpr SandboxContact kContacts[] = {
+${sdkTargets || '        {"TRK-01", 0.280f, 29.0f}'}
+};
+static constexpr SandboxContact kJammers[] = {
+${sdkJammers || '        {"NONE", 0.500f, 0.0f}'}
+};
 
-def synthesize_psd(n_bins: int = FFT_BINS) -> np.ndarray:
-    x = np.linspace(0.0, 1.0, n_bins)
-    rng = np.random.default_rng(42)
-    psd_db = -74.0 + rng.normal(0.0, 1.2, size=n_bins)
-    clutter_db = 21.0 * np.exp(-((x - 0.50) / 0.058) ** 2)
-    for jam in JAMMERS:
-        clutter_db += jam["power_db"] * np.exp(-((x - jam["center"]) / 0.072) ** 2)
-    psd_db += clutter_db * (0.16 if PRIOR_CONDITIONING else 1.0)
-    lobe_w = 2.2 / n_bins  # Hann-windowed coherent mainlobe width
-    for c in CONTACTS:
-        psd_db += c["snr_db"] * np.exp(-((x - c["bin_norm"]) / lobe_w) ** 2)
-    return psd_db
+int main(int argc, char** argv) {
+    priori::AppConfig cfg{
+        .title          = "${cfg.name.toUpperCase()} // PRIORI-SDK",
+        .classification = PRIORI_CLASS_CUI,           // Engine-enforced DoDI 5200.48 banners
+        .env_style      = ${envEnum}
+    };
+    priori::App app(cfg, argc, argv);
 
-def apriori_os_cfar(psd_db: np.ndarray) -> np.ndarray:
-    n = psd_db.size
-    thresh = np.empty_like(psd_db)
-    span = GUARD_CELLS + TRAIN_CELLS
-    for i in range(n):
-        lo, hi = max(0, i - span), min(n, i + span + 1)
-        idx = [k for k in range(lo, hi) if abs(k - i) > GUARD_CELLS]
-        cells = psd_db[idx]
-        base = np.percentile(cells, OS_PERCENTILE) if PRIOR_CONDITIONING else cells.mean()
-        thresh[i] = base + (THRESH_OFFSET_DB if PRIOR_CONDITIONING else 10.6)
-    return thresh
+    auto tPsd = app.create_tensor_1d("CONDITIONED_PSD_DB", ${cfg.fftSize});
+    auto tWf  = app.create_tensor_2d("PEAK_HOLD_WATERFALL", ${cfg.fftSize}, 256);
+    bool priorOn = ${priorEnabled ? 'true' : 'false'};
+    float cursorU = 0.50f;
 
-if __name__ == "__main__":
-    psd = synthesize_psd()
-    cfar = apriori_os_cfar(psd)
-    for c in CONTACTS:
-        b = int(round(c["bin_norm"] * (FFT_BINS - 1)))
-        margin = psd[b] - cfar[b]
-        state = "LOCKED" if margin >= 0 else "MASKED"
-        print(f"{c['id']:8s} | bin={b:4d} | margin={margin:+5.1f} dB -> {state}")`;
+    priori::dsp::DspPipeline dsp;
+    dsp.add_node("PRIOR_OS_CFAR_${cfg.fftSize}", "DMA_IQ_RING", "CONDITIONED_PSD_DB", [&]() {
+        for (std::uint32_t i = 0; i < ${cfg.fftSize}u; ++i) {
+            const float x = static_cast<float>(i) / ${cfg.fftSize - 1}.0f;
+            float clutter = 21.0f * std::exp(-std::pow((x - 0.50f) / 0.058f, 2.0f));
+            for (const auto& j : kJammers)
+                clutter += j.snr_db * std::exp(-std::pow((x - j.bin_norm) / 0.072f, 2.0f));
+            float pwr = 8.0f + clutter * (priorOn ? 0.16f : 1.0f);
+            for (const auto& c : kContacts)
+                pwr += c.snr_db * std::exp(-std::pow((x - c.bin_norm) / 0.008f, 2.0f));
+            tPsd[i] = pwr;
+        }
+    });
+    priori::lab::Inspector lab;
 
-    if (codePythonEl) codePythonEl.textContent = pythonCode;
+    app.run([&](priori::FrameContext& ctx) {
+        dsp.execute_all();
+        tWf.accumulate_peak_hold_in_current_row(tPsd.data()); // Zero dropped sub-ms transients
+        if (ctx.step_waterfalls) tWf.push_row(tPsd.data());
 
-    // Generate Deterministic Zero-Allocation C++20 Header Kernel
+        const auto nav = ctx.ui.begin_header_bar(cfg.title, "ZERO IPC MIDDLEWARE", ctx.gpu_frame_us, ctx.fps);
+        if (ctx.ui.button({nav.x + 16.0f, nav.y, 170.0f, nav.h}, priorOn ? "PRIOR: ON" : "PRIOR: OFF", priorOn))
+            priorOn = !priorOn;
+        lab.draw(ctx, {nav.x + 196.0f, nav.y, 184.0f, nav.h}, dsp);
+
+        auto card = ctx.ui.begin_card({16.0f, ctx.ui.top_safe_y() + 58.0f, 440.0f, 430.0f}, "${cfg.name.toUpperCase()}");
+        ctx.ui.plot_line_1d(card.next_row(95.0f), tPsd, 4.0f, 52.0f, priori::Palette::Ice, &cursorU);
+        ctx.ui.plot_waterfall_2d(card.next_row(240.0f), tWf, 4.0f, 50.0f, ${cmapEnum}, &cursorU);
+    });
+}`;
+
+    if (codePythonEl) codePythonEl.textContent = prioriSdkAppCode;
+
+    // Generate Deterministic Zero-Allocation C++23 Header Kernel
     const cppCode = `// A Priori Labs LLC — Deterministic Edge OS-CFAR + Prior Conditioning Kernel
-// Mode: ${cfg.name} | FFT=${cfg.fftSize} | Zero dynamic heap allocation (C++20)
+// Mode: ${cfg.name} | FFT=${cfg.fftSize} | Zero dynamic heap allocation (C++23 std::span)
 #pragma once
 #include <algorithm>
 #include <array>

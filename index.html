@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Priori Labs LLC | Real-Time Signal Processing, Edge DSP &amp; AI-Accelerated Defense Software</title>
-  <meta name="description" content="A Priori Labs LLC is a Veteran-Owned Small Business delivering physics-informed real-time DSP pipelines, autonomous signal diagnostics, and multi-modal tracking software—combining wave physics with AI-accelerated software engineering for rapid, low-overhead federal R&amp;D. Huntsville, AL | CAGE 26YG3." />
-  <meta property="og:title" content="A Priori Labs LLC | Real-Time Signal Intelligence &amp; AI-Accelerated Engineering" />
-  <meta property="og:description" content="Deterministic real-time sensor pipelines, signal diagnostics, and multi-modal tracking delivered in weeks, not years—without legacy contractor overhead." />
+  <title>A Priori Labs LLC | Physics-Informed Real-Time Edge DSP, Tracking &amp; Defense Software</title>
+  <meta name="description" content="A Priori Labs LLC is a Huntsville, AL Veteran-Owned Small Business (CAGE 26YG3) delivering physics-informed C++23 real-time DSP, autonomous interference diagnostics, multi-sensor tracking, and the zero-dependency PrioriEngine tactical runtime for DoD labs and Defense Primes." />
+  <meta property="og:title" content="A Priori Labs LLC | Real-Time Edge DSP, Signal Diagnostics &amp; PrioriEngine" />
+  <meta property="og:description" content="Deterministic C++23/GPU DSP pipelines, adaptive interference excision, Bayesian sensor fusion, and operational PrioriEngine consoles—delivered in weeks for Government labs and Defense Primes." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://apriori-labs.com/" />
   <link rel="canonical" href="https://apriori-labs.com/" />
@@ -17,6 +17,7 @@
     "name": "A Priori Labs LLC",
     "url": "https://apriori-labs.com/",
     "email": "info@apriori-labs.com",
+    "telephone": "+1-734-751-2203",
     "founder": {
       "@type": "Person",
       "name": "Ryan Gubert"
@@ -27,14 +28,21 @@
       "addressRegion": "AL",
       "addressCountry": "US"
     },
-    "description": "Veteran-Owned Small Business specializing in physics-informed real-time digital signal processing (DSP) pipelines, autonomous signal diagnostics, and AI-accelerated defense software engineering."
+    "knowsAbout": [
+      "Real-Time Digital Signal Processing (C++23 & GPU)",
+      "Radar, Electronic Warfare, TDOA/FDOA and Micro-Doppler",
+      "Passive Sonar, Split-Step Parabolic Equation and Subsea ASW",
+      "Multi-Modal Bayesian Tracking and Sensor Fusion",
+      "PrioriEngine and PrioriSDK Zero-Dependency Tactical Runtime"
+    ],
+    "description": "Veteran-Owned Small Business delivering physics-informed C++23 real-time DSP pipelines, autonomous signal diagnostics, Bayesian tracking, and the PrioriEngine tactical sensor runtime."
   }
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=14" />
 </head>
 <body>
   <header class="site-header">
@@ -47,11 +55,10 @@
       <nav aria-label="Primary Navigation">
         <ul class="nav-links" id="navLinks">
           <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#velocity">Velocity</a></li>
           <li><a href="#architecture">Architecture</a></li>
           <li><a href="#domains">Domains</a></li>
           <li><a href="#contracting">Contracting</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="engine.html" class="nav-pill-link">PrioriEngine SDK &rarr;</a></li>
         </ul>
       </nav>
 
@@ -76,24 +83,24 @@
             Physics-informed <span class="text-gradient">real-time signal intelligence</span> for the tactical &amp; industrial edge.
           </h1>
           <p class="hero-lead">
-            A Priori Labs builds deterministic DSP pipelines, autonomous signal diagnostics, and sensor-agnostic tracking software for radar, sonar, and RF systems—pairing first-principles physics with AI-accelerated software engineering to deliver working capabilities in weeks, not years.
+            A Priori Labs builds deterministic C++23/GPU signal processing, autonomous interference diagnostics, and Bayesian tracking—accelerated by <a href="engine.html" style="color: var(--accent-ice); text-decoration: underline; text-underline-offset: 3px;"><strong>PrioriEngine</strong></a>, our zero-dependency tactical visualization &amp; T&amp;E runtime—helping Government labs and Defense Primes field verified capabilities in weeks instead of throwaway prototype scripts.
           </p>
           <div class="hero-cta">
             <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-primary" target="_blank" rel="noopener">
-              Download Capabilities Statement
+              Download Capabilities PDF
             </a>
-            <a href="#velocity" class="btn btn-outline">
-              AI-Accelerated Execution
+            <a href="engine.html" class="btn btn-outline">
+              Explore PrioriEngine SDK &rarr;
             </a>
           </div>
           <div class="hero-metrics">
             <div>
               <div class="metric-label">Core Focus</div>
-              <div class="metric-value">Real-Time Edge DSP</div>
+              <div class="metric-value">Edge DSP, Fusion &amp; T&amp;E</div>
             </div>
             <div>
-              <div class="metric-label">Execution Model</div>
-              <div class="metric-value">Direct &bull; AI-Accelerated</div>
+              <div class="metric-label">Delivery Stack</div>
+              <div class="metric-value">Zero-Heap C++23 &amp; GPU</div>
             </div>
             <div>
               <div class="metric-label">CAGE / UEI</div>
@@ -130,11 +137,11 @@
               <button class="sim-btn sim-btn-ghost" id="btnResetSim" type="button" title="Reset sandbox to baseline contacts">Reset</button>
             </div>
             <button class="sim-btn sim-btn-report" id="btnOpenReport" type="button">
-              Analysis &amp; Code &rarr;
+              Analysis &amp; C++23 Code &rarr;
             </button>
           </div>
           <div class="dsp-footer">
-            <span id="dspReadout">1024-PT DOPPLER // OS-CFAR (Pfa = 1e-5) // LATENCY: 0.38 ms</span>
+            <span id="dspReadout">1024-PT FFT + OS-CFAR (PRIOR: ON) // LIVE JS SIM: 0.38 ms &bull; C++23 SIMD: ~3.2 &mu;s</span>
             <div class="dsp-legend">
               <span class="legend-item"><span class="swatch swatch-blue"></span>PSD (dB)</span>
               <span class="legend-item"><span class="swatch swatch-slate"></span>OS-CFAR</span>
@@ -155,15 +162,15 @@
             <div class="thesis-phonetic">/ˌeɪ praɪˈɔːraɪ/ &bull; Physics + Estimation</div>
           </div>
           <div class="thesis-desc">
-            Purely data-driven black boxes fail when environments shift, clutter spikes, or adversaries contest the spectrum. We pair <strong>first-principles wave physics and statistical priors</strong> with deterministic real-time software—achieving reliable detection, state estimation, and fault isolation under degraded SNR and tight SWaP constraints.
+            Purely data-driven black boxes fail when environments shift, clutter spikes, or adversaries contest the spectrum. We pair <strong>first-principles wave physics and statistical priors</strong> with deterministic C++23 software—achieving reliable detection, state estimation, and fault isolation under degraded SNR and tight SWaP constraints.
           </div>
         </div>
 
         <div class="section-header">
           <span class="section-tag">Core Technical Competencies</span>
-          <h2>Modular software engineered from raw waveform ingress to actionable state tracks.</h2>
+          <h2>Modular C++23 software engineered from raw waveform ingress to actionable state tracks.</h2>
           <p>
-            We design reusable software engines, embedded DSP libraries, and system analysis tooling adaptable across acoustic, electromagnetic, and multi-sensor architectures.
+            We design headless embedded DSP libraries, multi-target fusion middleware, and operational T&amp;E consoles adaptable across acoustic, electromagnetic, and multi-sensor programs.
           </p>
         </div>
 
@@ -172,13 +179,13 @@
             <div class="card-index">01 // REAL-TIME SIGNAL PIPELINES</div>
             <h3>Deterministic Edge DSP</h3>
             <p>
-              High-throughput, predictable-latency streaming pipelines architected to process raw IQ, acoustic, and array time-series data without frame drops or runtime memory jitter.
+              High-throughput, predictable-latency streaming pipelines architected to process raw IQ, hydrophone, and array time-series data without frame drops or runtime heap jitter.
             </p>
             <ul class="tech-list">
-              <li>Time-frequency &amp; Doppler processing (FFT, STFT, wavelet banks)</li>
-              <li>Adaptive array beamforming &amp; spatial interference nulling</li>
-              <li>Clutter, reverberation &amp; multipath suppression</li>
-              <li>Adaptive detection (CA-CFAR, SO-CFAR, OS-CFAR)</li>
+              <li>Time-frequency, Range-Doppler, rotor blade-flash &amp; <code>JEM</code> kernels</li>
+              <li>Adaptive array beamforming &amp; Woodbury <code>MVDR</code> interference nulling</li>
+              <li>Clutter, canyon/seafloor multipath &amp; reverberation suppression</li>
+              <li>Order-statistic &amp; cell-averaging detection (<code>OS/SO/CA-CFAR</code>)</li>
             </ul>
           </article>
 
@@ -190,9 +197,9 @@
             </p>
             <ul class="tech-list">
               <li>Real-time RF &amp; acoustic interference characterization &amp; excision</li>
-              <li>Sensor health, channel phase/gain drift &amp; noise-floor auditing</li>
-              <li>Low-SNR transient &amp; weak-signature anomaly isolation</li>
-              <li>Automated empirical Pd / Pfa / ROC performance verification</li>
+              <li>Array channel phase/gain drift &amp; noise-floor health auditing</li>
+              <li>Coherent multi-static <code>TDOA / FDOA</code> cross-ambiguity isolation</li>
+              <li>Automated empirical <code>Pd / Pfa / ROC</code> performance verification</li>
             </ul>
           </article>
 
@@ -200,65 +207,160 @@
             <div class="card-index">03 // MULTI-MODAL ESTIMATION</div>
             <h3>Sensor-Agnostic Fusion &amp; Tracking</h3>
             <p>
-              Modular estimation middleware that correlates asynchronous, heterogeneous sensor observations into unified kinematic tracks and confidence-weighted situational awareness.
+              Modular estimation middleware that correlates asynchronous, heterogeneous sensor observations into unified 64-bit <code>WGS84</code> kinematic tracks and custody confidence bounds.
             </p>
             <ul class="tech-list">
-              <li>Non-linear Bayesian state estimation (EKF, UKF, particle filters)</li>
+              <li>Non-linear Bayesian state estimation (<code>EKF</code>, <code>UKF</code>, particle filters)</li>
               <li>Multi-target data association &amp; track lifecycle management</li>
-              <li>Asynchronous out-of-sequence measurement (OOSM) fusion</li>
-              <li>Open-architecture interfaces for COTS &amp; tactical edge systems</li>
+              <li>Asynchronous out-of-sequence measurement (<code>OOSM</code>) fusion</li>
+              <li>Standard <code>ANSI/VITA-49.2</code>, <code>SigMF</code> &amp; <code>CoT</code> interfaces</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- AI-Accelerated Government Execution -->
+    <!-- Architecture (Bridges Headless Embedded ARM/x86 Libraries cleanly into PrioriEngine GPU Consoles) -->
+    <section id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Software-First Architecture</span>
+          <h2>Headless C++23 on embedded ARM/x86—plugging straight into <code>PrioriEngine</code> on the watchfloor.</h2>
+          <p>
+            Our core DSP, CFAR, and tracking headers have zero graphics or third-party dependencies so they deploy directly onto headless ARM/x86/FPGA sensor blades—and map without rewrites or localhost IPC glue into <code>PrioriEngine</code> whenever your program needs an operator console or range T&amp;E workbench.
+          </p>
+        </div>
+
+        <div class="pipeline-flow">
+          <div class="stage-box">
+            <div class="stage-step">Stage 01 &bull; Ingress</div>
+            <h4>Bounds-Safe Stream Capture</h4>
+            <p>Ingests 10/100GbE <code>ANSI/VITA-49.2</code> (<code>0x1</code> IF + <code>0x4</code> Context), <code>SigMF</code>, <code>ONR .SIO</code> hydrophone arrays, or <code>CUDA</code> / <code>DMA-BUF</code> device rings.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 02 &bull; Conditioning</div>
+            <h4>Headless C++23 / GPU DSP</h4>
+            <p>Executes matched filtering, coherent <code>TDOA / FDOA</code> Cross-Ambiguity (<code>CAF</code>), adaptive <code>MVDR</code> nulling, clutter cancellation, and in-line signal health diagnostics.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 03 &bull; Inference</div>
+            <h4>Detection &amp; Bayesian Fusion</h4>
+            <p>Applies deterministic <code>OS-CFAR</code> thresholding, micro-Doppler (rotor blade-flash &amp; <code>JEM</code>) feature extraction, and multi-target 64-bit <code>WGS84</code> state estimation.</p>
+          </div>
+          <div class="stage-box">
+            <div class="stage-step">Stage 04 &bull; Console &amp; DVR</div>
+            <h4><code>PrioriEngine</code> Egress</h4>
+            <p>Renders shared VRAM tensors on Linux/Windows Vulkan GPUs (&lt;1.2 ms cost, <code>DoDI 5200.48</code> banners), logs <code>SHA-256</code> T&amp;E <code>DVR</code>, &amp; emits <code>CoT</code>.</p>
+          </div>
+        </div>
+
+        <div class="principles-strip">
+          <div class="principle-item">
+            <strong>Clean Hardware Boundary</strong>
+            <span>Core zero-heap C++23 DSP &amp; tracking libraries run headless on embedded ARM/x86/FPGA SoCs; <code>PrioriEngine</code> targets Linux <code>ELF</code> &amp; Windows <code>PE</code> Vulkan 1.2/1.4 GPUs.</span>
+          </div>
+          <div class="principle-item">
+            <strong>Physics + Statistical Rigor</strong>
+            <span>Every estimator is backed by analytical Cram&eacute;r-Rao / error budgets, Monte Carlo stress testing, and reproducible <code>Pd / Pfa</code> benchmarking.</span>
+          </div>
+          <div class="principle-item">
+            <strong>Zero 3rd-Party Supply Chain</strong>
+            <span>100% U.S. citizen engineering with zero third-party application packages (<code>0 npm</code>, <code>0 pip</code>) and 600k-run <code>ASan/UBSan</code> + fuzz-verified parsers.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Focused PrioriEngine Delivery Platform Preview (Links cleanly to /engine.html Deep-Dive) -->
+    <section id="engine">
+      <div class="container">
+        <div class="section-header" style="max-width: 840px;">
+          <span class="section-tag">Our Unfair Delivery Multiplier &bull; PrioriEngine &amp; PrioriSDK v0.8</span>
+          <h2>Why our R&amp;D deliverables arrive as operational C++23 consoles—not throwaway MATLAB plots.</h2>
+          <p>
+            When A Priori Labs builds a custom radar, EW, or sonar pipeline—or licenses <strong>PrioriSDK</strong> directly to your lab or Prime IRAD team—our zero-middleware C++23 &amp; Vulkan runtime eliminates the 6-month <code>ZeroMQ + Node/Python + React/Cesium</code> integration bottleneck entirely.
+          </p>
+        </div>
+
+        <div class="engine-bridge-card">
+          <div class="engine-bridge-media">
+            <a href="engine.html#showcase" title="Explore all 5 verified PrioriEngine 1920x1080 reference workbenches">
+              <img src="assets/showcase_spectra_forensics.png" alt="SPECTRA-FORENSICS built on PrioriSDK v0.8 showing 3D hyperbolic TDOA geolocation, GPU Cross-Ambiguity heatmap, helical micro-Doppler blade-flash waterfall, MIL-STD-1472H ACK alarm banner, and 250,000-row forensic log" loading="lazy" />
+            </a>
+          </div>
+
+          <div>
+            <span class="domain-badge">PRIORISDK V0.8 // ZERO-MIDDLEWARE SENSOR RUNTIME</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.42rem; margin: 10px 0 12px; line-height: 1.28;">
+              Shared VRAM from <code>CUDA</code> / C++23 DSP straight to 60/120 Hz plots &amp; 64-bit <code>WGS84</code> 3D.
+            </h3>
+            <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.6; margin-bottom: 18px;">
+              Compiles into a ~3.3 MB zero-third-party executable (<code>Linux ELF</code> <code>glibc 2.28+</code> &amp; <code>Windows PE</code>) consuming <strong>0.60&ndash;1.23 ms of GPU time</strong>—leaving <strong>92&ndash;96% of an edge GPU free</strong> for beamforming and AI while preserving sub-millisecond transients via max-hold phosphor persistence.
+            </p>
+            <ul class="tech-list">
+              <li><strong>Zero-Rewrite Interop:</strong> <code>VK_KHR_external_memory</code> (<code>DMA-BUF</code>) + 64-bit timeline semaphores for existing <code>CUDA</code> (<code>cuFFT</code>) &amp; FPGA DMA streams</li>
+              <li><strong>Built-In Defense Primitives:</strong> Networked <code>VITA-49.2</code> (<code>0x1/0x4</code>), <code>SigMF</code>, 2,600+ <code>MIL-STD-2525E</code> SIDCs, <code>CoT</code>, <code>MIL-STD-1472H</code> UX, &amp; <code>DoDI 5200.48</code> banners</li>
+              <li><strong>Warfare-Center-Safe Licensing:</strong> Non-viral <strong>No-Cost Lab &amp; IRAD Evaluation License</strong> (zero <code>GPLv3</code> copyleft contamination) + Commercial &amp; <code>PrioriCert</code> RMF tiers</li>
+            </ul>
+            <div class="engine-bridge-actions">
+              <a href="engine.html" class="btn btn-primary">
+                Explore Workbenches, Benchmarks &amp; Stack Matrix &rarr;
+              </a>
+              <a href="engine.html#licensing" class="btn btn-outline">
+                Lab SDK &amp; Licensing Tiers
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI-Accelerated Execution & Prime Teaming Velocity -->
     <section id="velocity">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">AI-Accelerated Government Execution</span>
-          <h2>Working software in weeks—without 100-person overhead or year-long paper studies.</h2>
+          <span class="section-tag">Principal-Direct Engineering Velocity</span>
+          <h2>Eliminating lab-to-field handoff drag for Government sponsors &amp; Defense Primes.</h2>
           <p>
-            Federal research shouldn&rsquo;t spend six to twelve months of administrative burn just to produce static feasibility plots and throwaway scripts. By combining senior DSP and physics architecture with modern AI-assisted software engineering, A Priori Labs delivers verified, field-ready capabilities rapidly and cost-effectively.
+            Sensor programs shouldn&rsquo;t lose months translating offline feasibility scripts across disconnected algorithm, C++, and UI silos. Combining senior wave-physics architecture with declarative C++23 tooling and closed-loop headless verification lets A Priori Labs accelerate Prime milestones and direct R&amp;D deliverables alike.
           </p>
         </div>
 
         <div class="velocity-compare">
           <div class="compare-card compare-legacy">
-            <span class="compare-badge badge-muted">CONVENTIONAL CONTRACTING BOTTLENECK</span>
-            <h3>High-Overhead R&amp;D &amp; Multi-Layer Silos</h3>
+            <span class="compare-badge badge-muted">TRADITIONAL MULTI-SILO PROTOTYPING</span>
+            <h3>Lab-to-Field Rewrite &amp; Integration Drag</h3>
             <ul class="compare-list">
               <li>
-                <strong>6&ndash;12 Month Study Cycles</strong>
-                <span>Slow bureaucratic ramp-up that too often concludes in slide decks and static offline plots—requiring a costly ground-up rewrite before anything runs on real hardware.</span>
+                <strong>Throwaway Offline Feasibility Scripts</strong>
+                <span>Early R&amp;D phases frequently conclude in static notebook plots and unvalidated scripts—forcing a costly, schedule-slipping ground-up C++ rewrite before sea, flight, or range testing.</span>
               </li>
               <li>
-                <strong>15&ndash;100+ Person Handoff Chains</strong>
-                <span>Separate organizational silos across algorithm analysts, C++ porters, QA testers, tooling engineers, and program managers multiply schedule drag and indirect wrap rates.</span>
+                <strong>Sequential Cross-Silo Handoffs</strong>
+                <span>Passing specs sequentially from physics analysts to embedded C++ porters, IPC middleware engineers, and web UI teams multiplies interface mismatches and integration risk.</span>
               </li>
               <li>
-                <strong>The Large-Contractor Staffing Trap</strong>
-                <span>Government sponsors either absorb the overhead of sprawling program structures or receive only fractional attention from a small sub-team buried behind management layers.</span>
+                <strong>Brittle Demo Middleware</strong>
+                <span>Stitching prototype DSP into 1,500-package browser stacks creates frame drops during live sponsor demonstrations and heavy SCA/CVE remediation debt at transition.</span>
               </li>
             </ul>
           </div>
 
           <div class="compare-card compare-apriori">
             <span class="compare-badge badge-active">THE A PRIORI EXECUTION MODEL</span>
-            <h3>Direct Engineering + AI-Accelerated Velocity</h3>
+            <h3>Principal-Direct Execution &amp; Agile Prime Teaming</h3>
             <ul class="compare-list">
               <li>
-                <strong>Deployable Code in Days &amp; Weeks</strong>
-                <span>Rapid progression from first-principles mathematics straight to modular C++/Python engines, live operator testbenches, and reproducible Monte Carlo benchmarks.</span>
+                <strong>Field-Ready C++23 Deliverables in Weeks</strong>
+                <span>Direct progression from first-principles wave equations to zero-heap C++23 DSP libraries, <code>CUDA</code> / <code>VITA-49.2</code> adapters, Monte Carlo ROC benchmarks, and live <code>PrioriEngine</code> consoles.</span>
               </li>
               <li>
-                <strong>Multi-Discipline Output, Lean Cost</strong>
-                <span>Disciplined AI-assisted coding and automated test synthesis allow a dedicated principal engineer to deliver the cross-functional software throughput that historically required a 15-person team.</span>
+                <strong>Principal-Direct Engineering, Zero Junior Bloat</strong>
+                <span>Senior systems and DSP engineering—backed by deterministic C++23 standards, automated headless CI, and clean documentation—so delivered code is immediately auditable and maintainable by Prime or Government teams.</span>
               </li>
               <li>
-                <strong>Direct Engineer-to-Mission Tasking</strong>
-                <span>Assign well-scoped software and R&amp;D tasks directly to the engineer building the system—getting exact mission deliverables quickly, affordably, and with zero middle-management friction.</span>
+                <strong>Nimble Subsystem Gap-Filler for Primes &amp; Labs</strong>
+                <span>Bring A Priori Labs onto a capture demo, IRAD sprint, SBIR/STTR team, or subcontract to own a tough RF, acoustic, or tracking subsystem and hit aggressive schedule gates cleanly.</span>
               </li>
             </ul>
           </div>
@@ -268,73 +370,22 @@
           <div class="workflow-item">
             <div class="workflow-step">01 &bull; Human-Led Physics</div>
             <h4>Domain-Grounded Architecture</h4>
-            <p>Wave equations, Bayesian estimators, stability bounds, and deterministic latency budgets are designed by human engineering judgment—never delegated to black-box guesswork.</p>
+            <p>Wave equations, Bayesian estimators, stability bounds, and deterministic latency budgets are designed by senior engineering judgment—never delegated to black-box guesswork.</p>
           </div>
           <div class="workflow-item">
             <div class="workflow-step">02 &bull; AI-Assisted Synthesis</div>
-            <h4>10x Implementation Speed</h4>
-            <p>Modern AI coding workflows compress C++20/Python implementation, data-bus adapters, build tooling, and visualization workbenches from months into days.</p>
+            <h4>Accelerated C++23 &amp; GPU</h4>
+            <p>Agent-ready C++23 interfaces (<code>AGENTS.md</code>) compress real-time DSP kernels, <code>VITA-49.2</code> / <code>CUDA</code> adapters, and <code>PrioriSDK</code> T&amp;E workbenches from months into days.</p>
           </div>
           <div class="workflow-item">
-            <div class="workflow-step">03 &bull; Automated Verification</div>
-            <h4>Exhaustive Test Harnesses</h4>
-            <p>Every module ships with AI-accelerated unit suites, synthetic clutter/jamming scenario stress tests, and analytical Pd/Pfa/ROC performance validation.</p>
+            <div class="workflow-step">03 &bull; Headless Verification</div>
+            <h4>Sanitized &amp; Self-Testing</h4>
+            <p>Every module ships with 600k-run <code>ASan/UBSan</code> + fuzz parser checks, offscreen GPU frame + JSON assertions, synthetic jamming stress tests, and empirical <code>Pd / Pfa</code> validation.</p>
           </div>
           <div class="workflow-item">
             <div class="workflow-step">04 &bull; Sovereign Hygiene</div>
             <h4>Clean-Room &amp; Air-Gap Ready</h4>
-            <p>Strict data boundaries ensure sensitive government parameters never touch public cloud models, with fully offline workflows ready for restricted programs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Architecture -->
-    <section id="architecture">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Software-First Architecture</span>
-          <h2>Built for bench-to-field parity across any sensor front end.</h2>
-          <p>
-            Our modular pipeline architecture decouples core mathematical algorithms from vendor-specific hardware, enabling rapid integration onto existing government, defense prime, and commercial COTS sensor platforms.
-          </p>
-        </div>
-
-        <div class="pipeline-flow">
-          <div class="stage-box">
-            <div class="stage-step">Stage 01 &bull; Ingress</div>
-            <h4>Raw Stream Capture</h4>
-            <p>Ingests high-rate IQ baseband, hydrophone/microphone arrays, radar packets, or recorded truth datasets via standardized zero-copy ring buffers.</p>
-          </div>
-          <div class="stage-box">
-            <div class="stage-step">Stage 02 &bull; Conditioning</div>
-            <h4>DSP &amp; Integrity Guard</h4>
-            <p>Executes matched filtering, adaptive beamforming, clutter/reverberation cancellation, and real-time interference or sensor-fault diagnostics.</p>
-          </div>
-          <div class="stage-box">
-            <div class="stage-step">Stage 03 &bull; Inference</div>
-            <h4>Detection &amp; Estimation</h4>
-            <p>Applies constant-false-alarm-rate thresholding, kinematic feature extraction, and multi-target Bayesian state tracking across sensor modalities.</p>
-          </div>
-          <div class="stage-box">
-            <div class="stage-step">Stage 04 &bull; Egress</div>
-            <h4>Actionable Telemetry</h4>
-            <p>Publishes low-latency state tracks, signal health alerts, and diagnostic metrics to operator displays, autonomy stacks, or open C2 buses.</p>
-          </div>
-        </div>
-
-        <div class="principles-strip">
-          <div class="principle-item">
-            <strong>Hardware-Agnostic Modularity</strong>
-            <span>Runs cleanly on embedded ARM, x86 mission computers, GPU edge nodes, or desktop simulation environments.</span>
-          </div>
-          <div class="principle-item">
-            <strong>Physics + Statistical Rigor</strong>
-            <span>Every algorithm is backed by analytical error budgets, Monte Carlo stress testing, and reproducible ROC benchmarking.</span>
-          </div>
-          <div class="principle-item">
-            <strong>Sovereign Air-Gapped Posture</strong>
-            <span>100% U.S. veteran-led engineering execution capable of fully offline, zero-cloud-egress development and deployment.</span>
+            <p>Strict data boundaries ensure sponsor parameters never touch public cloud models, with GFE / air-gapped on-site delivery supported for CUI and classified enclaves.</p>
           </div>
         </div>
       </div>
@@ -347,32 +398,32 @@
           <span class="section-tag">Application Domains</span>
           <h2>Proven algorithmic roots in wave-based sensing &amp; high-rate telemetry.</h2>
           <p>
-            While our software core is sensor-agnostic, our deepest heritage spans radar, underwater acoustics, and contested multi-sensor environments.
+            While our C++23 software core is sensor-agnostic, our deepest focus spans electromagnetic sensing, underwater acoustics, and high-rate test &amp; evaluation workbenches.
           </p>
         </div>
 
         <div class="domains-grid">
           <div class="card">
-            <span class="domain-badge">ELECTROMAGNETIC / RF</span>
-            <h3>Radar &amp; RF Sensing</h3>
+            <span class="domain-badge">ELECTROMAGNETIC, EW &amp; SDA</span>
+            <h3>Radar, RF Forensics &amp; Space C2</h3>
             <p>
-              Pulse-Doppler and FMCW signal processing, micro-Doppler signature extraction, urban/ground clutter mitigation, and electronic protection against co-channel interference for compact COTS and tactical radars.
+              High-resolution Pulse-Doppler and Range-Doppler processing, coherent multi-static <code>TDOA / FDOA</code> geolocation, micro-Doppler, rotor blade-flash &amp; <code>JEM</code> classification, and adaptive <code>MVDR</code> jammer excision for tactical radars, passive EW receivers, and orbital custody.
             </p>
           </div>
 
           <div class="card">
             <span class="domain-badge">UNDERSEA &amp; ACOUSTICS</span>
-            <h3>Sonar &amp; Acoustic Arrays</h3>
+            <h3>Subsea ASW &amp; Sonar Arrays</h3>
             <p>
-              Passive and active sonar array processing, adaptive beamforming, shallow-water reverberation suppression, narrowband/broadband contact tracking, and terrestrial acoustic array localization.
+              Passive and active hydrophone array processing (native <code>ONR .SIO</code> &amp; <code>VITA-49.2</code>), Wide-Angle Split-Step Parabolic Equation (<code>PE</code>) propagation modeling, 3D bathymetric eigenray tracing, and shallow-water reverberation suppression.
             </p>
           </div>
 
           <div class="card">
-            <span class="domain-badge">DUAL-USE &amp; T&amp;E</span>
-            <h3>System Diagnostics &amp; Verification</h3>
+            <span class="domain-badge">DUAL-USE T&amp;E &amp; PRIORISDK</span>
+            <h3>Verification Workbenches &amp; Signed DVR</h3>
             <p>
-              Automated sensor verification workbenches, synthetic clutter/interference injection for pre-range testing, and continuous vibration/acoustic anomaly detection for critical infrastructure and aerospace assets.
+              Turnkey <code>PrioriSDK</code> operator &amp; range T&amp;E consoles, tamper-evident <code>SHA-256</code> flight recorders (<code>DVR</code>), synthetic clutter/jammer hardware-in-the-loop (HIL) injection, and continuous vibration/acoustic health monitoring.
             </p>
           </div>
         </div>
@@ -384,59 +435,59 @@
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Federal &amp; Prime Contracting</span>
-          <h2>Ready for direct tasking, SBIR/STTR, OTA &amp; agile subcontracts.</h2>
+          <h2>Ready for direct lab tasking, SBIR/STTR, OTA &amp; Defense Prime subcontracts.</h2>
           <p>
-            A Priori Labs LLC is a Veteran-Owned Small Business maintaining an active SAM.gov registration for All Awards and partnering with DoD agencies, federal research laboratories, defense primes, and commercial sensor manufacturers—structured so sponsors can assign focused R&amp;D and software tasks directly to senior engineering talent without big-contractor overhead.
+            Led by a U.S. military veteran and radar/acoustic systems engineer with prior DoD &amp; commercial experience in real-time C++/CUDA DSP, seismic-acoustic &amp; RF array processing, and sensor performance modeling, A Priori Labs LLC maintains an active SAM.gov registration for All Awards. All proprietary software modules are developed exclusively at private expense (<code>DFARS 227.7202</code> &amp; <code>252.227-7014</code> / <code>FAR 52.227-19</code>) with clean interfaces ready for SBIR/STTR Phase I/II/III and program integration.
           </p>
         </div>
 
         <div class="contracting-wrap">
           <div class="id-table" aria-label="Corporate Registration Identifiers">
             <div class="id-row">
-              <span class="id-key">Legal Entity Name</span>
-              <span class="id-val">A Priori Labs LLC</span>
+              <div class="id-key">Legal Entity Name</div>
+              <div class="id-val">A Priori Labs LLC</div>
             </div>
             <div class="id-row">
-              <span class="id-key">CAGE / NCAGE Code</span>
-              <span class="id-val">
+              <div class="id-key">CAGE / NCAGE Code</div>
+              <div class="id-val">
                 <strong>26YG3</strong>
                 <button class="copy-btn" type="button" data-copy="26YG3">COPY</button>
-              </span>
+              </div>
             </div>
             <div class="id-row">
-              <span class="id-key">Unique Entity ID (UEI)</span>
-              <span class="id-val">
+              <div class="id-key">Unique Entity ID (UEI)</div>
+              <div class="id-val">
                 <strong>RG2JV9CZQJC7</strong>
                 <button class="copy-btn" type="button" data-copy="RG2JV9CZQJC7">COPY</button>
-              </span>
+              </div>
             </div>
             <div class="id-row">
-              <span class="id-key">SAM.gov Registration</span>
-              <span class="id-val" style="color: var(--accent-ice);">Active &bull; All Awards</span>
+              <div class="id-key">SAM.gov Registration</div>
+              <div class="id-val" style="color: var(--accent-ice);">Active &bull; All Awards</div>
             </div>
             <div class="id-row">
-              <span class="id-key">Business Structure</span>
-              <span class="id-val">Veteran-Owned Small Business (LLC)</span>
+              <div class="id-key">Business Structure</div>
+              <div class="id-val">Veteran-Owned Small Business (LLC)</div>
             </div>
             <div class="id-row">
-              <span class="id-key">Location</span>
-              <span class="id-val">Huntsville Metro (Harvest), AL</span>
+              <div class="id-key">Location</div>
+              <div class="id-val">Huntsville Metro (Harvest), AL</div>
             </div>
             <div class="id-row">
-              <span class="id-key">Security &amp; Compliance</span>
-              <span class="id-val">U.S. Citizen Principal &bull; NIST SP 800-171 Aligned</span>
+              <div class="id-key">Security &amp; Enclave Posture</div>
+              <div class="id-val"><span>U.S. Citizen Principal &bull; FCI Clean-Room (FAR 52.204-21) &bull; GFE / Air-Gapped CUI Ready</span></div>
             </div>
             <div class="id-row">
-              <span class="id-key">Point of Contact</span>
-              <span class="id-val">
-                Ryan Gubert &bull; info@apriori-labs.com
+              <div class="id-key">Point of Contact</div>
+              <div class="id-val">
+                <span>Ryan Gubert &bull; <a href="tel:+17347512203" style="color: inherit;">(734) 751-2203</a> &bull; info@apriori-labs.com</span>
                 <button class="copy-btn" type="button" data-copy="info@apriori-labs.com">COPY</button>
-              </span>
+              </div>
             </div>
           </div>
 
           <div class="naics-panel">
-            <h3>NAICS Classifications</h3>
+            <h3>NAICS &amp; PSC Classifications</h3>
             <ul class="naics-list">
               <li>
                 <span class="naics-code">541715</span>
@@ -454,6 +505,10 @@
                 <span class="naics-code">541512</span>
                 <span>Computer Systems Design Services (Edge Sensor &amp; Fusion Architectures)</span>
               </li>
+              <li>
+                <span class="naics-code">513210</span>
+                <span>Software Publishers (<code>PrioriSDK</code> Commercial Licenses &bull; PSC 7A21)</span>
+              </li>
             </ul>
             <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-primary" style="width: 100%;" target="_blank" rel="noopener">
               Download 1-Page Capabilities PDF
@@ -470,15 +525,15 @@
           <div>
             <h2>Partner with A Priori Labs</h2>
             <p>
-              Reach out regarding direct software tasking, SBIR/STTR collaborations, defense prime teaming, or rapid real-time DSP and sensor pipeline prototypes.
+              Reach out regarding Defense Prime subcontract teaming, SBIR/STTR collaborations, direct lab software tasking, or a no-cost Lab &amp; IRAD evaluation of <code>PrioriSDK v0.8</code>.
             </p>
           </div>
           <div class="cta-buttons">
             <a href="mailto:info@apriori-labs.com?subject=A%20Priori%20Labs%20Inquiry" class="btn btn-primary">
               Email info@apriori-labs.com
             </a>
-            <a href="assets/A-Priori-Labs-Capabilities-Statement.pdf" class="btn btn-outline" target="_blank" rel="noopener">
-              View Capabilities Brief
+            <a href="engine.html" class="btn btn-outline">
+              Explore PrioriEngine SDK &rarr;
             </a>
           </div>
         </div>
@@ -489,7 +544,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div>
-        <strong>A Priori Labs LLC</strong> &bull; Huntsville Metro, Alabama &bull; <a href="mailto:info@apriori-labs.com" style="color: var(--accent-ice);">info@apriori-labs.com</a>
+        <strong>A Priori Labs LLC</strong> &bull; Huntsville Metro, AL &bull; <a href="tel:+17347512203" style="color: var(--text-secondary);">(734) 751-2203</a> &bull; <a href="mailto:info@apriori-labs.com" style="color: var(--accent-ice);">info@apriori-labs.com</a>
       </div>
       <div class="footer-meta">
         Veteran-Owned Small Business &nbsp;|&nbsp; CAGE: 26YG3 &nbsp;|&nbsp; UEI: RG2JV9CZQJC7 &nbsp;|&nbsp; &copy; 2026 A Priori Labs LLC
@@ -510,8 +565,8 @@
 
       <div class="modal-tabs" role="tablist">
         <button class="modal-tab active" data-modal-tab="report" type="button">01 // Engineering Analysis</button>
-        <button class="modal-tab" data-modal-tab="python" type="button">02 // Runnable Python (.py)</button>
-        <button class="modal-tab" data-modal-tab="cpp" type="button">03 // Real-Time C++20 (.hpp)</button>
+        <button class="modal-tab" data-modal-tab="cpp" type="button">02 // Zero-Heap C++23 Kernel (.hpp)</button>
+        <button class="modal-tab" data-modal-tab="python" type="button">03 // Live PrioriSDK Console (.cpp)</button>
       </div>
 
       <div class="modal-body">
@@ -538,9 +593,9 @@
 
           <div class="insight-callout">
             <div>
-              <strong>Reports take seconds. Working software in your hands is the real multiplier.</strong>
+              <strong>Reports take seconds. Field-ready C++23 software is the real multiplier.</strong>
               <p>
-                Conventional defense contracts often spend 6&ndash;12 months of overhead just to hand over a static PDF report around plots like the one you just ran. A Priori Labs can deliver the analytical brief immediately—but our real value is translating first-principles physics <strong>directly into verified, mission-ready code 10x faster</strong>.
+                Traditional multi-silo R&amp;D cycles often spend months of handoffs just to produce static plots like the one you just ran. A Priori Labs delivers the analytical error budget immediately—and translates first-principles physics <strong>straight into verified C++23 DSP &amp; <code>PrioriEngine</code> consoles in weeks</strong>.
               </p>
             </div>
             <div class="insight-actions">
@@ -550,27 +605,27 @@
           </div>
         </div>
 
-        <!-- Tab 2: Runnable Python -->
-        <div class="modal-pane" id="pane-python" hidden>
-          <div class="code-toolbar">
-            <span>Configured directly from your live sandbox scenario (NumPy / Python 3.10+)</span>
-            <button class="copy-btn" id="btnCopyPython" type="button">COPY PYTHON</button>
-          </div>
-          <pre class="code-block"><code id="codePython"></code></pre>
-        </div>
-
-        <!-- Tab 3: Deterministic C++20 -->
+        <!-- Tab 2: Deterministic Zero-Heap C++23 Kernel -->
         <div class="modal-pane" id="pane-cpp" hidden>
           <div class="code-toolbar">
-            <span>Zero-heap-allocation deterministic edge kernel (C++20 / Embedded ARM &amp; x86)</span>
-            <button class="copy-btn" id="btnCopyCpp" type="button">COPY C++20</button>
+            <span>Zero-heap-allocation deterministic edge DSP kernel (C++23 std::span / Headless ARM &amp; x86)</span>
+            <button class="copy-btn" id="btnCopyCpp" type="button">COPY C++23 KERNEL</button>
           </div>
           <pre class="code-block"><code id="codeCpp"></code></pre>
+        </div>
+
+        <!-- Tab 3: Auto-Configured PrioriSDK v0.8 Console -->
+        <div class="modal-pane" id="pane-python" hidden>
+          <div class="code-toolbar">
+            <span>Complete zero-dependency PrioriSDK v0.8 C++23 console configured from your live sandbox targets</span>
+            <button class="copy-btn" id="btnCopyPython" type="button">COPY PRIORISDK APP</button>
+          </div>
+          <pre class="code-block"><code id="codePython"></code></pre>
         </div>
       </div>
     </div>
   </div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=13"></script>
 </body>
 </html>

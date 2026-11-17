@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>A Priori Labs LLC — Capabilities Statement</title>
+  <title>A Priori Labs LLC — Capabilities Statement (CAGE 26YG3)</title>
   <style>
     @page {
       size: letter;
-      margin: 0.30in 0.42in;
+      margin: 0.20in 0.34in;
     }
     * {
       box-sizing: border-box;
@@ -17,39 +17,50 @@
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
       color: #0f172a;
       background: #ffffff;
-      font-size: 9.1pt;
-      line-height: 1.37;
+      font-size: 8.2pt;
+      line-height: 1.28;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
     .header {
       background: #070d19;
       color: #f8fafc;
-      padding: 14px 20px;
-      border-radius: 8px;
+      padding: 9.5px 14px;
+      border-radius: 7px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 3px solid #3b82f6;
-      margin-bottom: 11px;
+      border-bottom: 3px solid #38bdf8;
+      margin-bottom: 6.5px;
+    }
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .brand-logo {
+      width: 37px;
+      height: 37px;
+      flex-shrink: 0;
     }
     .brand-title {
-      font-size: 18pt;
+      font-size: 16.2pt;
       font-weight: 800;
       letter-spacing: 0.04em;
       color: #ffffff;
+      line-height: 1.1;
     }
     .brand-tagline {
-      font-size: 9.5pt;
+      font-size: 8.6pt;
       color: #93c5fd;
       font-weight: 600;
-      margin-top: 3px;
+      margin-top: 2.5px;
     }
     .header-meta {
       text-align: right;
-      font-size: 8.5pt;
+      font-size: 7.95pt;
       color: #cbd5e1;
-      line-height: 1.48;
+      line-height: 1.42;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -58,59 +69,95 @@
     }
     .summary-box {
       background: #f1f5f9;
-      border-left: 4px solid #2563eb;
-      padding: 9px 13px;
+      border-left: 4px solid #0284c7;
+      padding: 6px 11px;
       border-radius: 0 6px 6px 0;
-      margin-bottom: 11px;
-      font-size: 9.2pt;
+      margin-bottom: 6.5px;
+      font-size: 8.15pt;
+      line-height: 1.31;
       color: #1e293b;
+    }
+    .kpi-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6.5px;
+      margin-bottom: 7.5px;
+    }
+    .kpi-pill {
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 5px;
+      padding: 4.8px 7.5px;
+      border-top: 2px solid #38bdf8;
+    }
+    .kpi-pill span {
+      display: block;
+      font-size: 6.55pt;
+      text-transform: uppercase;
+      letter-spacing: 0.045em;
+      color: #94a3b8;
+    }
+    .kpi-pill strong {
+      font-size: 7.65pt;
+      color: #ffffff;
+      font-family: Consolas, 'Courier New', monospace;
+      white-space: nowrap;
     }
     .grid-main {
       display: grid;
-      grid-template-columns: 1.48fr 0.82fr;
-      gap: 16px;
+      grid-template-columns: 1.52fr 0.84fr;
+      gap: 13px;
     }
     h2 {
-      font-size: 10.2pt;
+      font-size: 8.85pt;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #1d4ed8;
+      letter-spacing: 0.055em;
+      color: #0369a1;
       border-bottom: 1.5px solid #cbd5e1;
-      padding-bottom: 4px;
-      margin-bottom: 9px;
-      margin-top: 12px;
+      padding-bottom: 2px;
+      margin-bottom: 4.5px;
+      margin-top: 7px;
     }
     h2:first-child {
       margin-top: 0;
     }
     .comp-block {
-      margin-bottom: 10px;
+      margin-bottom: 5.5px;
     }
     .comp-block h3 {
-      font-size: 9.5pt;
+      font-size: 8.55pt;
       color: #0f172a;
-      margin-bottom: 3px;
+      margin-bottom: 1.5px;
     }
     ul {
       padding-left: 15px;
       color: #334155;
     }
     li {
-      margin-bottom: 3px;
+      margin-bottom: 1.8px;
+    }
+    code {
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 7.65pt;
+      color: #0f172a;
+      background: #e2e8f0;
+      padding: 0 3px;
+      border-radius: 2px;
+      white-space: nowrap;
     }
     .sidebar-card {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
-      border-radius: 7px;
-      padding: 9px 11px;
-      margin-bottom: 8px;
+      border-radius: 6px;
+      padding: 5.5px 8.5px;
+      margin-bottom: 5.5px;
     }
     .kv-row {
       display: flex;
       justify-content: space-between;
-      padding: 4px 0;
+      padding: 2px 0;
       border-bottom: 1px dashed #cbd5e1;
-      font-size: 8.8pt;
+      font-size: 7.85pt;
     }
     .kv-row:last-child {
       border-bottom: none;
@@ -125,81 +172,120 @@
       font-family: Consolas, 'Courier New', monospace;
     }
     .naics-item {
-      font-size: 8.6pt;
-      margin-bottom: 4.5px;
+      font-size: 7.75pt;
+      margin-bottom: 2.3px;
       color: #334155;
+      line-height: 1.24;
     }
     .naics-item strong {
-      color: #1d4ed8;
+      color: #0369a1;
       font-family: Consolas, monospace;
     }
     .diff-list li {
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+      font-size: 7.85pt;
+      line-height: 1.26;
     }
     .footer {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 6px;
+      padding-top: 5px;
       border-top: 1.5px solid #0f172a;
       display: flex;
       justify-content: space-between;
-      font-size: 8.5pt;
+      font-size: 7.95pt;
       color: #334155;
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <div>
-      <div class="brand-title">A PRIORI LABS LLC</div>
-      <div class="brand-tagline">Real-Time Signal Processing, Edge Sensor Pipelines &amp; Autonomous Signal Diagnostics</div>
+    <div class="brand-left">
+      <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+        <rect width="64" height="64" rx="14" fill="#0b1324"/>
+        <rect x="2" y="2" width="60" height="60" rx="12" stroke="#334155" stroke-width="2.2"/>
+        <path d="M12 44 C18 44, 21 20, 27 20 C33 20, 35 46, 41 46 C46 46, 48 30, 52 30" stroke="#38bdf8" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 36 L52 36" stroke="#94a3b8" stroke-width="1.75" stroke-dasharray="3 3" opacity="0.85"/>
+        <circle cx="27" cy="20" r="4.2" fill="#f8fafc"/>
+      </svg>
+      <div>
+        <div class="brand-title">A PRIORI LABS LLC</div>
+        <div class="brand-tagline">Physics-Informed Real-Time DSP, Signal Diagnostics &amp; PrioriEngine Tactical Runtime</div>
+      </div>
     </div>
     <div class="header-meta">
-      <strong>CAGE Code:</strong> 26YG3 &nbsp;|&nbsp; <strong>UEI:</strong> RG2JV9CZQJC7<br />
+      <strong>CAGE:</strong> 26YG3 &nbsp;|&nbsp; <strong>UEI:</strong> RG2JV9CZQJC7<br />
       Veteran-Owned &bull; Huntsville, AL &bull; SAM.gov Active (All Awards)<br />
-      <strong>www.apriori-labs.com</strong> &bull; info@apriori-labs.com
+      <strong>(734) 751-2203</strong> &bull; info@apriori-labs.com &bull; <strong>apriori-labs.com</strong>
     </div>
   </div>
 
   <div class="summary-box">
-    <strong>Corporate Overview:</strong> A Priori Labs LLC is a Huntsville-area, Veteran-Owned engineering and scientific software small business specializing in deterministic real-time digital signal processing (DSP), autonomous interference and anomaly diagnostics, and multi-modal state estimation. Combining first-principles wave physics with disciplined AI-accelerated software engineering, we deliver verified, deployable C++/Python capabilities across radar, sonar/acoustic, and RF sensor systems in weeks—eliminating multi-month study delays and large-contractor overhead.
+    <strong>Corporate Overview:</strong> A Priori Labs LLC is a Huntsville-area, Veteran-Owned defense and scientific software small business delivering deterministic C++23 real-time digital signal processing (DSP), autonomous interference/anomaly diagnostics, multi-modal Bayesian tracking, and our zero-dependency <strong>PrioriEngine &amp; PrioriSDK v0.8</strong> tactical runtime. Led by a U.S. military veteran and radar/acoustic systems engineer with prior DoD &amp; commercial experience in real-time C++/CUDA DSP, seismic-acoustic &amp; RF array processing, and sensor performance modeling, we help DoD labs and Defense Primes field verified capabilities in weeks.
+  </div>
+
+  <div class="kpi-band">
+    <div class="kpi-pill">
+      <span>UI + 3D GPU Frame Cost</span>
+      <strong>0.60–1.23 ms (&gt;92% Free)</strong>
+    </div>
+    <div class="kpi-pill">
+      <span>Zero-3rd-Party Executable</span>
+      <strong>~3.3 MB (0 3rd-Party Deps)</strong>
+    </div>
+    <div class="kpi-pill">
+      <span>CUDA Sync &amp; C2 Ingress</span>
+      <strong>DMA-BUF + Sem &bull; VITA-49.2</strong>
+    </div>
+    <div class="kpi-pill">
+      <span>Parser Memory Safety</span>
+      <strong>std::span &bull; ASan/UBSan + Fuzzed</strong>
+    </div>
   </div>
 
   <div class="grid-main">
     <div>
-      <h2>Core Technical Competencies</h2>
+      <h2>Core Technical Competencies &amp; Software Products</h2>
 
       <div class="comp-block">
-        <h3>1. Deterministic Real-Time DSP &amp; Wavefront Pipelines</h3>
+        <h3>1. Deterministic Real-Time DSP &amp; Wavefront Processing (Headless ARM / x86 / GPU)</h3>
         <ul>
-          <li>Low-latency streaming architectures for high-rate IQ baseband, acoustic, and multi-element array feeds on low-SWaP edge compute.</li>
-          <li>Time-frequency &amp; Doppler processing (FFT, STFT, multi-resolution wavelets), pulse compression, and matched filtering.</li>
-          <li>Adaptive beamforming, spatial interference nulling, shallow-water reverberation suppression, and ground/sea clutter mitigation.</li>
-          <li>Constant False Alarm Rate (CA-CFAR, SO-CFAR, OS-CFAR) adaptive detection in non-homogeneous noise environments.</li>
+          <li>Zero-heap C++23 (<code>std::span</code>) &amp; GPU streaming libraries for wideband IQ, hydrophone arrays, and pulse-Doppler feeds on headless ARM/x86/FPGA blades.</li>
+          <li>Coherent Cross-Ambiguity (TDOA/FDOA), rotor blade-flash &amp; JEM micro-Doppler extraction, cepstral combs, &amp; matched filtering.</li>
+          <li>Woodbury adaptive MVDR spatial nulling, Wide-Angle Split-Step Parabolic Equation (PE) wave solvers, &amp; CA/SO/OS-CFAR detection.</li>
         </ul>
       </div>
 
       <div class="comp-block">
-        <h3>2. Autonomous Signal Integrity, Interference &amp; Anomaly Diagnostics</h3>
+        <h3>2. PrioriEngine &amp; PrioriSDK v0.8 — Zero-Middleware Tactical Runtime</h3>
         <ul>
-          <li>Continuous in-stream monitoring to detect co-channel interference, jamming, multipath distortion, and sensor calibration/phase drift.</li>
-          <li>Automated weak-signature anomaly isolation and transient fault detection before downstream tracking degradation occurs.</li>
-          <li>Empirical sensor pipeline verification: automated derivation of Pd, Pfa, ROC curves, latency jitter, and track-drop root causes.</li>
+          <li>Replaces multi-process ZeroMQ + Node/Python + React/Cesium stacks with a ~3.3 MB zero-3rd-party executable (Linux ELF <code>glibc 2.28+</code> for RHEL 8/9, Rocky, Ubuntu &amp; Windows PE; statically links <code>libstdc++</code>, binds only OS <code>libc</code> &amp; Vulkan ICD) with offline-embedded <code>SPIR-V</code>.</li>
+          <li>Shared VRAM (<code>gTensorArena</code>) exports <code>VK_KHR_external_memory</code> (<code>DMA-BUF</code>) + 64-bit timeline semaphores so CUDA (<code>cuFFT</code>), HIP, &amp; FPGA DMA streams plot tear-free with 0 localhost IPC sockets and max-hold phosphor persistence.</li>
+          <li>Vulkan 1.4 HW-RT + Vulkan 1.2 Non-RT fallback (iGPUs, VDI, <code>lavapipe</code> CI), plus zero-install browser PrioriStream portal (fronted by enclave FIPS 140-3 TLS / CAC reverse proxies).</li>
+          <li>Native 64-bit WGS84, VITA-49.2 (0x1 IF + 0x4 Context), SigMF, 2,600+ MIL-STD-2525E SIDCs, rigid <code>.glb</code> meshes, CoT, MIL-STD-1472H UX (<code>--ui-scale</code>, [ACK] alarms, Daylight mode), engine-enforced DoDI 5200.48 banners, &amp; signed SHA-256 T&amp;E DVR.</li>
         </ul>
       </div>
 
       <div class="comp-block">
-        <h3>3. Sensor-Agnostic Multi-Modal Fusion &amp; State Estimation</h3>
+        <h3>3. Autonomous Signal Integrity, Diagnostics &amp; Closed-Loop T&amp;E</h3>
         <ul>
-          <li>Non-linear Bayesian filtering (EKF, UKF, particle filters) and multi-target probabilistic data association across asynchronous feeds.</li>
-          <li>Modular C++ / Python software engines decoupled from proprietary sensor hardware for rapid COTS and open-architecture integration.</li>
+          <li>In-line monitoring for co-channel jamming, canyon/seafloor multipath ghosts, sensor phase/gain drift, and low-SNR transient faults.</li>
+          <li>Bounds-enforced <code>std::span</code> parsers (<code>max_depth = 16</code>, XXE-immune) verified across 600k Linux ASan + UBSan runs + LLVM libFuzzer.</li>
+          <li>Offscreen headless GPU rendering + JSON telemetry assertions enabling rapid CI and air-gapped local LLM verification loops.</li>
         </ul>
       </div>
 
-      <h2>Relevant Domain Experience</h2>
+      <div class="comp-block">
+        <h3>4. Multi-Modal Bayesian State Estimation &amp; Sensor Fusion</h3>
+        <ul>
+          <li>Non-linear Bayesian trackers (EKF, UKF, particle filters), probabilistic data association, and out-of-sequence measurement (OOSM) fusion.</li>
+        </ul>
+      </div>
+
+      <h2>Verified Reference Workbenches &amp; Domain Heritage</h2>
       <ul>
-        <li><strong>Radar &amp; Electromagnetic Systems:</strong> Doppler target detection, clutter cancellation, kinematic feature extraction, and low-RCS target tracking under degraded SNR.</li>
-        <li><strong>Sonar &amp; Acoustic Sensing:</strong> Passive/active acoustic array processing, beamforming, reverberation suppression, and narrowband/broadband contact localization.</li>
-        <li><strong>System Modeling &amp; Verification:</strong> End-to-end mathematical pipeline modeling, synthetic clutter/interference injection, and bench-to-field runtime deployment.</li>
+        <li><strong>Forensic MASINT/SIGINT &amp; EW:</strong> 4-site 3D hyperbolic TDOA/FDOA geolocation + 3-blade UAS rotor blade-flash ID (SPECTRA-FORENSICS) &amp; S-Band VITA-49.2 MVDR watchdog (50k&ndash;250k virtualized event logs).</li>
+        <li><strong>Radar &amp; Space Domain Awareness:</strong> Hypersonic boost-glide &amp; LEO 256&times;128 GPU Range-Doppler C2 (ARGUS-SDA) with 100k-object catalog.</li>
+        <li><strong>Subsea ASW &amp; Sonar:</strong> Real 27-ch ONR SWellEx-96 <code>.SIO</code> hydrophone replay, Split-Step PE curtains, &amp; continuous 3D bathymetric eigenrays.</li>
       </ul>
     </div>
 
@@ -208,27 +294,38 @@
         <h2>Corporate Snapshot</h2>
         <div class="kv-row"><span class="kv-key">CAGE Code</span><span class="kv-val">26YG3</span></div>
         <div class="kv-row"><span class="kv-key">Unique Entity ID</span><span class="kv-val">RG2JV9CZQJC7</span></div>
-        <div class="kv-row"><span class="kv-key">SAM.gov Status</span><span class="kv-val" style="color:#1d4ed8;">Active (All Awards)</span></div>
-        <div class="kv-row"><span class="kv-key">Entity Type</span><span class="kv-val">Small Business LLC</span></div>
-        <div class="kv-row"><span class="kv-key">Ownership</span><span class="kv-val">U.S. Veteran-Owned</span></div>
-        <div class="kv-row"><span class="kv-key">Location</span><span class="kv-val">Huntsville, AL</span></div>
+        <div class="kv-row"><span class="kv-key">SAM.gov Status</span><span class="kv-val" style="color:#0369a1;">Active (All Awards)</span></div>
+        <div class="kv-row"><span class="kv-key">Business Size</span><span class="kv-val">Small Business LLC</span></div>
+        <div class="kv-row"><span class="kv-key">Socioeconomic</span><span class="kv-val">Veteran-Owned</span></div>
+        <div class="kv-row"><span class="kv-key">Location</span><span class="kv-val">Huntsville Metro, AL</span></div>
+        <div class="kv-row"><span class="kv-key">Security Posture</span><span class="kv-val">FCI (FAR 52.204-21)</span></div>
       </div>
 
       <div class="sidebar-card">
-        <h2>NAICS Codes</h2>
-        <div class="naics-item"><strong>541715</strong> &mdash; R&amp;D in the Physical, Engineering, and Life Sciences (Primary)</div>
-        <div class="naics-item"><strong>541330</strong> &mdash; Engineering Services (Military, Maritime &amp; Aerospace)</div>
-        <div class="naics-item"><strong>541511</strong> &mdash; Custom Computer Programming Services</div>
-        <div class="naics-item"><strong>541512</strong> &mdash; Computer Systems Design Services</div>
+        <h2>NAICS &amp; PSC Codes</h2>
+        <div class="naics-item"><strong>541715</strong> &mdash; R&amp;D in Physical, Engineering &amp; Life Sciences (Primary SBIR/STTR)</div>
+        <div class="naics-item"><strong>541330</strong> &mdash; Defense, Maritime &amp; Aerospace Engineering Services</div>
+        <div class="naics-item"><strong>541511</strong> &mdash; Custom Real-Time DSP &amp; Scientific Software</div>
+        <div class="naics-item"><strong>541512</strong> &mdash; Tactical Edge &amp; Sensor System Design</div>
+        <div class="naics-item"><strong>513210</strong> &mdash; Software Publishers (PrioriSDK Commercial Licenses)</div>
+        <div class="naics-item"><strong>PSCs:</strong> AC12, AC13, DA01, 7A21</div>
+      </div>
+
+      <div class="sidebar-card">
+        <h2>Contracting &amp; Licensing</h2>
+        <ul class="diff-list">
+          <li><strong>Direct R&amp;D &amp; Prime Teaming:</strong> SBIR/STTR Phase I/II/III, OTAs, BAA tasking, &amp; agile Defense Prime subcontracts (GFE / air-gapped CUI ready).</li>
+          <li><strong>Warfare-Center-Safe SDK:</strong> Non-viral No-Cost Lab &amp; IRAD Evaluation License (zero GPLv3 risk); Commercial &amp; PrioriCert RMF licenses for fielded deployments.</li>
+          <li><strong>Private-Expense IP:</strong> Proprietary PrioriCore physics modules (DFARS 227.7202 / 252.227-7014) ready for SBIR &amp; program integration.</li>
+        </ul>
       </div>
 
       <div class="sidebar-card">
         <h2>Key Differentiators</h2>
         <ul class="diff-list">
-          <li><strong>Physics + Priors:</strong> First-principles signal models resilient where black-box ML fails.</li>
-          <li><strong>AI-Accelerated Velocity:</strong> Multi-discipline software throughput in weeks—working C++/Python code, not slow paper studies.</li>
-          <li><strong>Direct Lean Tasking:</strong> Task the principal engineer directly with zero 100-person overhead or fractional handoffs.</li>
-          <li><strong>Bench-to-Edge &amp; Sovereign:</strong> Production parity; NIST SP 800-171 aligned &amp; air-gap capable.</li>
+          <li><strong>Physics + Priors:</strong> Resilient in low-SNR, multipath, &amp; jammed spectra where black-box ML fails.</li>
+          <li><strong>Zero 3rd-Party CVE Churn:</strong> Eliminates 1,500-package npm / pip SCA &amp; SBOM remediation bottlenecks.</li>
+          <li><strong>Principal-Direct Velocity:</strong> Senior-direct C++23 execution &amp; rapid Prime subsystem gap-filling with zero handoff bloat.</li>
         </ul>
       </div>
     </div>
@@ -236,7 +333,7 @@
 
   <div class="footer">
     <div><strong>Point of Contact:</strong> Ryan Gubert, Founder &amp; Principal Systems Engineer</div>
-    <div><strong>Email:</strong> info@apriori-labs.com &nbsp;|&nbsp; <strong>Web:</strong> https://apriori-labs.com</div>
+    <div><strong>Tel:</strong> (734) 751-2203 &nbsp;|&nbsp; <strong>Email:</strong> info@apriori-labs.com &nbsp;|&nbsp; <strong>Web:</strong> https://apriori-labs.com</div>
   </div>
 </body>
 </html>
