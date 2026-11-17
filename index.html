@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
 <body>
   <header class="site-header">
@@ -109,12 +109,13 @@
           </div>
         </div>
 
-        <!-- Live Interactive PrioriEngine Mini-Console (Coupled 3D Terrain + Tracker + Docked Waterfall) -->
+        <!-- Live Interactive PrioriEngine Mini-Console (Coupled 3D Terrain + C++23 WASM Tracker + Docked Waterfall) -->
         <div class="dsp-panel" aria-label="Interactive PrioriEngine 3D Tracking and Spectrum Mini-Console">
           <div class="dsp-header">
             <div class="dsp-title">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>PRIORI-ENGINE // LIVE MINI-CONSOLE</span>
+              <span>PRIORI-ENGINE // C++23 WASM MINI-CONSOLE</span>
+              <button class="dsp-info-btn" id="btnEngineInfo" type="button" aria-expanded="false" aria-controls="consoleInfoPopover" title="What is running in this console?">? Engine Info</button>
             </div>
             <div class="dsp-tabs" role="tablist" aria-label="Theater Mode">
               <button class="dsp-tab active" data-mode="radar" type="button">RADAR</button>
@@ -124,17 +125,28 @@
             </div>
           </div>
           <div class="dsp-subbar">
-            <span class="dsp-hint">Click 3D map to spawn target &bull; Hover track to sync spectrum</span>
-            <span id="dspScorePill" class="dsp-score-pill">LOCKED: 2/2 &bull; IMM-EKF ERR: 3.8 m</span>
+            <span class="dsp-hint">Click 3D map to spawn target &bull; Switch Tracker to see turn lag vs. lock</span>
+            <span id="dspScorePill" class="dsp-score-pill pill-ok">&#10003; 2/2 HOLDING TRACK &bull; IMM-EKF (3.1m)</span>
           </div>
           <div class="dsp-canvas-wrap">
+            <div class="console-info-popover" id="consoleInfoPopover" hidden>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong>What You&rsquo;re Seeing &amp; How PrioriEngine Is Used Here</strong>
+                <button class="copy-btn" id="btnCloseEngineInfo" type="button" style="padding: 2px 7px;">CLOSE &times;</button>
+              </div>
+              <ul>
+                <li><strong>Real C++23 Engine Core (<code>priori_core.wasm</code> &bull; 7.0 KB):</strong> The kinematic trackers (<code>IMM-EKF</code>, <code>Kalman</code>, <code>&alpha;-&beta;</code>) and 65th-percentile <code>OS-CFAR</code> detector run live at 60 Hz in <strong>compiled freestanding C++23 WebAssembly</strong> (0 external libraries), sharing a zero-copy <code>Float32Array</code> tensor arena with the viewport—just like our native Vulkan <code>Linux ELF</code> / <code>Windows PE</code> runtime.</li>
+                <li><strong>Scene Layout:</strong> Top pane shows a bottom-center sensor scanning a 3D valley while targets fly figure-8 paths with <strong>5.5G evasive turns</strong>; bottom dock shows the coupled Doppler spectrum &amp; waterfall.</li>
+                <li><strong>See Tracker Lock vs. Failure:</strong> Switch <code>Tracker: IMM-EKF</code> &rarr; <code>Basic &alpha;-&beta;</code> to watch fixed-gain tracking <strong>break its 38m gate and coast off-target (red)</strong> in sharp turns, then switch back to <code>IMM-EKF</code> to re-lock (green)!</li>
+              </ul>
+            </div>
             <canvas id="dspCanvas"></canvas>
           </div>
           <div class="dsp-controls" aria-label="Mini-Console Controls">
             <div class="sim-btn-group">
-              <button class="sim-btn" id="btnSpawnStealth" type="button" title="Inject maneuvering low-SNR contact">+ Target</button>
+              <button class="sim-btn" id="btnSpawnStealth" type="button" title="Inject maneuvering contact">+ Target</button>
               <button class="sim-btn" id="btnSpawnJammer" type="button" title="Inject directional jammer strobe">+ Jammer</button>
-              <button class="sim-btn sim-btn-toggle active" id="btnTrackerCycle" type="button" title="Cycle tracking filter: IMM-EKF vs. Kalman vs. Basic alpha-beta">Tracker: IMM-EKF</button>
+              <button class="sim-btn sim-btn-toggle active" id="btnTrackerCycle" type="button" title="Cycle C++23 tracker: IMM-EKF (holds turns) vs. Kalman (turn lag) vs. Basic alpha-beta (loses lock)">Tracker: IMM-EKF</button>
               <button class="sim-btn sim-btn-toggle active" id="btnPriorToggle" type="button" aria-pressed="true" title="Toggle adaptive clutter &amp; jammer nulling">Prior: ON</button>
               <button class="sim-btn sim-btn-ghost" id="btnResetSim" type="button" title="Reset scenario">Reset</button>
             </div>
@@ -143,12 +155,12 @@
             </button>
           </div>
           <div class="dsp-footer">
-            <span id="dspReadout">IMM-EKF + 1024-PT OS-CFAR (PRIOR: ON) // PRI-ENGINE GPU: ~0.85 ms &bull; C++23 DSP: ~3.2 &mu;s</span>
+            <span id="dspReadout">C++23 WASM (7.0 KB): ACTIVE // IMM-EKF + 192-BIN OS-CFAR // ZERO-COPY ARENA</span>
             <div class="dsp-legend">
-              <span class="legend-item"><span class="swatch swatch-blue"></span>Est. Track</span>
+              <span class="legend-item"><span class="swatch" style="background:#34d399;"></span>Locked</span>
+              <span class="legend-item"><span class="swatch swatch-amber"></span>Turn Lag</span>
+              <span class="legend-item"><span class="swatch" style="background:#f87171;"></span>Lost Lock</span>
               <span class="legend-item"><span class="swatch swatch-slate"></span>OS-CFAR</span>
-              <span class="legend-item"><span class="swatch swatch-white"></span>2525E Lock</span>
-              <span class="legend-item"><span class="swatch swatch-amber"></span>Jammer</span>
             </div>
           </div>
         </div>
@@ -566,6 +578,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
 </body>
 </html>
