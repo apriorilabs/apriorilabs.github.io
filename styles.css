@@ -2052,9 +2052,70 @@ section {
 }
 
 .trio-body p {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.54;
+  flex-grow: 1;
+}
+
+.trio-cta {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-ice);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trio-card:hover .trio-cta {
+  color: #ffffff;
+}
+
+.custom-stack-banner {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(125, 211, 252, 0.34);
+  border-radius: 10px;
+  padding: 13px 18px;
+  margin-bottom: 22px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.52;
+}
+
+.custom-stack-banner strong {
+  color: var(--accent-white);
+}
+
+/* 3-Column Visual Screen Orientation Guide inside engine.html Demo Panes */
+.screen-guide-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 16px 28px;
+  background: rgba(6, 11, 22, 0.88);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.screen-guide-col {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.48;
+}
+
+.screen-guide-col span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #7dd3fc;
+  margin-bottom: 3px;
 }
 
 /* License Page Document Box */
@@ -2171,7 +2232,8 @@ section {
   .pillars-grid,
   .domains-grid,
   .principles-strip,
-  .showcase-trio {
+  .showcase-trio,
+  .screen-guide-strip {
     grid-template-columns: 1fr;
   }
 

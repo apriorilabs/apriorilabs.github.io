@@ -41,18 +41,36 @@
     code: document.getElementById('engine-pane-code')
   };
 
+  function activateEngineTab(targetKey, updateHistory) {
+    if (!targetKey || !enginePanes[targetKey]) return;
+    engineTabs.forEach((t) => t.classList.toggle('active', t.getAttribute('data-engine-tab') === targetKey));
+    Object.entries(enginePanes).forEach(([key, pane]) => {
+      if (!pane) return;
+      const isMatch = key === targetKey;
+      pane.classList.toggle('active', isMatch);
+      pane.hidden = !isMatch;
+    });
+    if (updateHistory && window.history && window.history.replaceState) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('tab', targetKey);
+      window.history.replaceState(null, '', url.toString());
+    }
+  }
+
   engineTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      const targetKey = tab.getAttribute('data-engine-tab');
-      engineTabs.forEach((t) => t.classList.toggle('active', t === tab));
-      Object.entries(enginePanes).forEach(([key, pane]) => {
-        if (!pane) return;
-        const isMatch = key === targetKey;
-        pane.classList.toggle('active', isMatch);
-        pane.hidden = !isMatch;
-      });
+      activateEngineTab(tab.getAttribute('data-engine-tab'), true);
     });
   });
+
+  // Auto-select deep-linked demo tab from ?tab=rf | sda | asw | forensics | code
+  if (engineTabs.length > 0) {
+    const params = new URLSearchParams(window.location.search);
+    const initialTab = params.get('tab');
+    if (initialTab && enginePanes[initialTab]) {
+      activateEngineTab(initialTab, false);
+    }
+  }
 
   const aswSubBtns = document.querySelectorAll('[data-asw-src]');
   const aswPreviewImg = document.getElementById('aswPreviewImg');

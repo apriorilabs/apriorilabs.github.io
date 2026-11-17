@@ -42,7 +42,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=18" />
+  <link rel="stylesheet" href="styles.css?v=21" />
 </head>
 <body>
   <header class="site-header">
@@ -235,29 +235,33 @@
           </p>
         </div>
 
+        <div class="custom-stack-banner">
+          <strong>100% Custom Vulkan Graphics Engine + Custom C++23/GPU DSP:</strong> Every pixel in the four applications below—3D ray-traced terrain &amp; bathymetry, vector UI/fonts, scientific waterfalls, and 250k-row tables—is rendered from scratch by our own Vulkan engine (<strong>zero</strong> Unreal, Unity, Qt, ImGui, or HTML/React), fed directly in shared GPU memory by our own custom signal-processing code.
+        </div>
+
         <div class="engine-bridge-card">
           <div class="engine-bridge-media">
-            <a href="engine.html#showcase" title="Explore all 5 verified PrioriEngine 1920x1080 reference workbenches">
+            <a href="engine.html?tab=forensics#showcase" title="Inspect Tab 01: SPECTRA-FORENSICS TDOA &amp; Rotor Blade-Flash Workbench">
               <img src="assets/showcase_spectra_forensics.png" alt="SPECTRA-FORENSICS built on PrioriSDK v0.8 showing 3D hyperbolic TDOA geolocation, GPU Cross-Ambiguity heatmap, helical rotor blade-flash waterfall, MIL-STD-1472H ACK alarm banner, and 250,000-row forensic log" loading="lazy" />
             </a>
           </div>
 
           <div>
-            <span class="domain-badge">PRIORISDK V0.8 // ZERO-MIDDLEWARE SENSOR RUNTIME</span>
-            <h3 style="font-family: var(--font-display); font-size: 1.38rem; margin: 10px 0 12px; line-height: 1.28;">
-              Zero-copy VRAM from C++23 &amp; <code>CUDA</code> straight to waterfalls, 250k tables &amp; 3D <code>WGS84</code>.
+            <span class="domain-badge">DEMO 01 // CUSTOM 3D ENGINE + PASSIVE TDOA &amp; ROTOR DSP (1.14 MS GPU)</span>
+            <h3 style="font-family: var(--font-display); font-size: 1.36rem; margin: 10px 0 10px; line-height: 1.28;">
+              SPECTRA-FORENSICS: Pinpointing &amp; classifying hidden valley drones.
             </h3>
-            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.58; margin-bottom: 16px;">
-              Renders full 3D scenes and scientific plots in <strong>0.60&ndash;1.23 ms</strong> on Linux (<code>ELF</code>) and Windows (<code>PE</code>)—leaving <strong>92%+ of an edge GPU free</strong> for your DSP, tracking, and AI models with zero third-party application libraries.
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.56; margin-bottom: 14px;">
+              <strong>What you&rsquo;re looking at:</strong> <strong>Center:</strong> Custom 3D coastal valley intersecting cyan <code>TDOA</code> hyperbolas from 4 hilltop receivers to locate a terrain-masked emitter (<code>4.1 m CEP</code>) while rejecting canyon echoes. <strong>Left:</strong> Custom GPU cross-ambiguity heatmap &amp; 3-blade rotor micro-Doppler waterfall identifying the exact airframe. <strong>Right:</strong> Cepstral RPM comb &amp; <code>250,000</code>-row event log.
             </p>
             <ul class="tech-list">
-              <li><strong>Plug In Existing GPU Code:</strong> Direct <code>CUDA</code> / <code>DMA-BUF</code> memory + 64-bit timeline semaphore sync with 0 localhost IPC sockets</li>
-              <li><strong>Defense-Ready Out of the Box:</strong> <code>VITA-49.2</code>, <code>SigMF</code>, <code>MIL-STD-2525E</code>, <code>CoT</code>, <code>MIL-STD-1472H</code> Daylight UX &amp; <code>DoDI 5200.48</code> banners</li>
-              <li><strong>Warfare-Center-Safe Licensing:</strong> Non-viral <strong>No-Cost Lab &amp; IRAD Evaluation SDK</strong> + Commercial &amp; <code>PrioriCert</code> RMF tiers</li>
+              <li><strong>Zero-Copy Shared VRAM:</strong> C++23 &amp; <code>CUDA</code> / <code>DMA-BUF</code> tensors render in place with 0 localhost IPC sockets</li>
+              <li><strong>92%+ Edge GPU Headroom:</strong> Full 3D + 250k UI takes ~1.1 ms on Linux (<code>ELF</code>) &amp; Windows (<code>PE</code>)</li>
+              <li><strong>Warfare-Center-Safe SDK:</strong> Non-viral <strong>No-Cost Lab &amp; IRAD Evaluation</strong> + Commercial &amp; <code>PrioriCert</code> tiers</li>
             </ul>
             <div class="engine-bridge-actions">
-              <a href="engine.html" class="btn btn-primary">
-                Explore Full PrioriEngine SDK &amp; Benchmarks &rarr;
+              <a href="engine.html?tab=forensics#showcase" class="btn btn-primary">
+                Inspect Forensic TDOA Demo &rarr;
               </a>
               <a href="mailto:info@apriori-labs.com?subject=PrioriSDK%20v0.8%20Lab%20%26%20IRAD%20Evaluation%20Request" class="btn btn-outline" data-inquiry="eval">
                 Request Free Lab SDK
@@ -266,38 +270,47 @@
           </div>
         </div>
 
-        <!-- Visual Showcase Trio of Built Workbenches -->
+        <!-- Visual Showcase Trio of Built Workbenches (Each Deep-Links to Its Specific Demo Tab!) -->
         <div class="showcase-trio" aria-label="Examples Built on PrioriEngine">
-          <a href="engine.html#showcase" class="trio-card" style="text-decoration: none;">
+          <a href="engine.html?tab=rf#showcase" class="trio-card" style="text-decoration: none;">
             <span class="trio-thumb">
               <img src="assets/showcase_rf_ew.png" alt="RF-EW Spectrum Watchdog and PrioriLab Wire-Probe" loading="lazy" />
             </span>
             <div class="trio-body">
-              <span class="trio-tag">EW &amp; ELINT // 0.80 MS GPU</span>
+              <span class="trio-tag">DEMO 02 // CUSTOM EW DSP + LIVE DEBUGGER (0.80 MS)</span>
               <h4>S-Band Watchdog &amp; <code>PrioriLab</code></h4>
-              <p>Networked <code>VITA-49.2</code> ingest, 8-ch <code>MVDR</code> nulling, peak-hold waterfall, &amp; live DAG wire-probe.</p>
+              <p>
+                <strong>Left:</strong> Live <code>VITA-49.2</code> RF waterfall &amp; IQ constellation from custom C++23 FFTs. <strong>Center:</strong> Built-in <code>PrioriLab</code> debugger probing live DSP timing &amp; <code>SHA-256</code> tensor hashes. <strong>Right:</strong> 8-antenna polar plot carving a <code>-38.5 dB MVDR</code> anti-jam null + 50k emitter table.
+              </p>
+              <span class="trio-cta"><span>Inspect RF-EW Demo</span><span>&rarr;</span></span>
             </div>
           </a>
 
-          <a href="engine.html#showcase" class="trio-card" style="text-decoration: none;">
+          <a href="engine.html?tab=sda#showcase" class="trio-card" style="text-decoration: none;">
             <span class="trio-thumb">
               <img src="assets/showcase_sda_hypersonic.png" alt="ARGUS-SDA Orbital and Hypersonic Range-Doppler C2" loading="lazy" />
             </span>
             <div class="trio-body">
-              <span class="trio-tag">RADAR &amp; SPACE C2 // 0.72 MS GPU</span>
+              <span class="trio-tag">DEMO 03 // CUSTOM 3D GLOBE + GPU RADAR (0.72 MS)</span>
               <h4>ARGUS-SDA Range-Doppler C2</h4>
-              <p>Zero-PCIe-copy GPU Range-Doppler kernel, 64-bit <code>WGS84</code> tracking, &amp; 100k-object catalog.</p>
+              <p>
+                <strong>Center:</strong> Custom 64-bit <code>WGS84</code> 3D theater tracking a maneuvering Mach 8.4 boost-glide vehicle with plasma wake. <strong>Left:</strong> Custom GPU radar shader writing a live Range-Doppler map &amp; intercept waterfall directly to VRAM. <strong>Right:</strong> 100k-object orbital catalog.
+              </p>
+              <span class="trio-cta"><span>Inspect Radar &amp; Space Demo</span><span>&rarr;</span></span>
             </div>
           </a>
 
-          <a href="engine.html#showcase" class="trio-card" style="text-decoration: none;">
+          <a href="engine.html?tab=asw#showcase" class="trio-card" style="text-decoration: none;">
             <span class="trio-thumb">
               <img src="assets/showcase_monterey_canyon.png" alt="Subsea ASW Acoustic Digital Twin over Monterey Canyon" loading="lazy" />
             </span>
             <div class="trio-body">
-              <span class="trio-tag">SUBSEA ASW // 2.31 MS PHYSICS + UI</span>
+              <span class="trio-tag">DEMO 04 // CUSTOM RAY TRACER + SONAR WAVE PHYSICS (2.31 MS)</span>
               <h4>Subsea Acoustic Digital Twin</h4>
-              <p>Real 27-ch <code>ONR .SIO</code> array replay, Split-Step <code>PE</code> wave solver, &amp; 3D bathymetric eigenrays.</p>
+              <p>
+                <strong>Center:</strong> Drained 131k-triangle Monterey submarine canyon rendered by our custom Vulkan ray tracer, bending 3D sound rays off seafloor ridges &amp; thermoclines. <strong>Left:</strong> Real 27-ch <code>ONR</code> hydrophone LOFAR waterfall. <strong>Right:</strong> <code>MVDR</code> sonar + 256-FFT full-wave acoustic curtain.
+              </p>
+              <span class="trio-cta"><span>Inspect Subsea ASW Demo</span><span>&rarr;</span></span>
             </div>
           </a>
         </div>
@@ -568,6 +581,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=21"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=18" /> />
+  <link rel="stylesheet" href="styles.css?v=21" /> />
 </head>
 <body>
   <header class="site-header">
@@ -99,9 +99,9 @@
       <div class="container">
         <div class="section-header" style="max-width: 860px;">
           <span class="section-tag">Verified Reference Workbenches</span>
-          <h2>Operational C++23 sensor consoles built directly on <code>PrioriSDK v0.8</code>.</h2>
+          <h2>Custom Vulkan graphics engine + custom C++23/GPU DSP in every screenshot.</h2>
           <p>
-            Every workbench below compiles from a single declarative C++23 source file with offline-embedded <code>SPIR-V</code> shaders and zero third-party application libraries. Click any capture to inspect the full native lossless <code>1920&times;1080</code> hardware frame.
+            None of the applications below use Unreal, Unity, Qt, Dear ImGui, or HTML/React. Every 3D terrain ray, vector font glyph, waterfall pixel, and 250k-row table is rendered directly by <code>PrioriEngine</code> from shared GPU memory alongside our custom signal-processing kernels.
           </p>
         </div>
 
@@ -146,6 +146,20 @@
               <a id="spectraPreviewLink" href="assets/showcase_spectra_forensics.png" target="_blank" rel="noopener" title="Open native lossless 1920x1080 PNG hardware capture">
                 <img id="spectraPreviewImg" src="assets/showcase_spectra_forensics.png" alt="PrioriSDK SPECTRA-FORENSICS analyst workbench showing 3D intersecting TDOA geolocation hyperbolas over coastal mountain valley, GPU coherent Cross-Ambiguity heatmap, helical 3-blade rotor blade-flash spectrogram, cepstral RPM comb, MIL-STD-1472H ACK alarm banner, and 250,000-row forensic log" />
               </a>
+            </div>
+            <div class="screen-guide-strip" aria-label="Visual Guide to SPECTRA-FORENSICS Screenshot">
+              <div class="screen-guide-col">
+                <span>Left Dock // Custom GPU DSP</span>
+                256&times;128 Cross-Ambiguity (<code>TDOA &times; FDOA</code>) heatmap isolating a canyon echo, paired with a peak-hold 3-blade rotor micro-Doppler spectrogram.
+              </div>
+              <div class="screen-guide-col">
+                <span>Center // Custom Vulkan 3D Engine</span>
+                Ray-traced coastal valley terrain intersecting 4 analytical 3D hyperbolic curves onto the hidden emitter (<code>4.1 m CEP</code>) + <code>MIL-STD-1472H [ACK]</code> alert bar.
+              </div>
+              <div class="screen-guide-col">
+                <span>Right Dock // Classifier &amp; 250k Log</span>
+                Cepstral harmonic RPM comb (<code>3,692 RPM</code>, 98.4% airframe match) above an O(1) virtualized <code>250,000</code>-row forensic event table.
+              </div>
             </div>
             <div class="engine-meta-grid">
               <div>
@@ -200,6 +214,20 @@
                 <img src="assets/showcase_rf_ew.png" alt="PrioriSDK RF-EW Watchdog showing S-Band Inferno waterfall, IQ constellation, 8-channel MVDR direction finding, 50,000-row virtualized ELINT table, and open PrioriLab DevTools" loading="lazy" />
               </a>
             </div>
+            <div class="screen-guide-strip" aria-label="Visual Guide to RF-EW Watchdog Screenshot">
+              <div class="screen-guide-col">
+                <span>Left Dock // Custom C++23 Spectrum</span>
+                512-bin Blackman-Harris PSD, peak-hold Inferno waterfall, and live baseband IQ constellation fed directly from zero-heap <code>VITA-49.2</code> packets.
+              </div>
+              <div class="screen-guide-col">
+                <span>Center // Custom 3D + PrioriLab Debugger</span>
+                Custom Vulkan coastal theater overlaid with our built-in <code>PrioriLab</code> inspector showing per-node DSP microseconds, live tensor waveforms, &amp; <code>SHA-256</code> hashes.
+              </div>
+              <div class="screen-guide-col">
+                <span>Right Dock // Anti-Jam Polar + 50k Grid</span>
+                8-element polar antenna beamformer carving a <code>-38.5 dB</code> Woodbury <code>MVDR</code> null directly into a jammer, above a <code>50,000</code>-row ELINT intercept log.
+              </div>
+            </div>
             <div class="engine-meta-grid">
               <div>
                 <span class="domain-badge">ELECTRONIC WARFARE &amp; ELINT REFERENCE APP</span>
@@ -223,6 +251,20 @@
               <a href="assets/showcase_sda_hypersonic.png" target="_blank" rel="noopener" title="Open native lossless 1920x1080 PNG hardware capture">
                 <img src="assets/showcase_sda_hypersonic.png" alt="PrioriSDK ARGUS-SDA Hypersonic and Orbital C2 showing 256x128 GPU Range-Doppler heatmap, intercept range-time waterfall, 64-bit WGS84 tracking, and 100,000-row orbital catalog" loading="lazy" />
               </a>
+            </div>
+            <div class="screen-guide-strip" aria-label="Visual Guide to ARGUS-SDA Screenshot">
+              <div class="screen-guide-col">
+                <span>Left Dock // Zero-Copy GPU Radar</span>
+                Custom GPU matched-filter shader writing a live Range-Doppler ambiguity map, range cut, and intercept range-time waterfall directly into shared VRAM.
+              </div>
+              <div class="screen-guide-col">
+                <span>Center // 64-Bit WGS84 3D Theater</span>
+                Jitter-free 64-bit <code>WGS84 / ECEF</code> custom Vulkan renderer tracking a maneuvering Mach 8.4 boost-glide vehicle with plasma wake &amp; radar volume cone.
+              </div>
+              <div class="screen-guide-col">
+                <span>Right Dock // Azimuth &amp; 100k Catalog</span>
+                180-degree phased-array azimuth sector scan paired with a <code>100,000</code>-object LEO &amp; missile custody table scrolling at 0.72 ms GPU cost.
+              </div>
             </div>
             <div class="engine-meta-grid">
               <div>
@@ -262,6 +304,20 @@
               <a id="aswPreviewLink" href="assets/showcase_monterey_canyon.png" target="_blank" rel="noopener" title="Open native lossless 1920x1080 PNG hardware capture">
                 <img id="aswPreviewImg" src="assets/showcase_monterey_canyon.png" alt="PrioriEngine Subsea ASW Theater showing continuous 63-segment tile-binned 3D ray-traced acoustic eigenrays, 131k-triangle NOAA bathymetry BVH, Split-Step PE waveguide curtain, and adaptive MVDR sonar" loading="lazy" />
               </a>
+            </div>
+            <div class="screen-guide-strip" aria-label="Visual Guide to Subsea ASW Screenshot">
+              <div class="screen-guide-col">
+                <span>Left Dock // Real 27-Ch Hydrophones</span>
+                Zero-copy LOFAR narrowband waterfall &amp; broadband array energy replayed directly from real 27-channel <code>ONR SWellEx-96 .SIO</code> seafloor recordings.
+              </div>
+              <div class="screen-guide-col">
+                <span>Center // Custom 3D Acoustic Ray Tracer</span>
+                Drained 131k-triangle NOAA Monterey Canyon bathymetry BVH rendered by our custom Vulkan engine, refracting &amp; reflecting 63-segment 3D sound eigenrays.
+              </div>
+              <div class="screen-guide-col">
+                <span>Right Dock // MVDR Sonar + Full-Wave PE</span>
+                Adaptive <code>MVDR</code> bearing-time sonar, contact classifier bars, and a 256-FFT Wide-Angle Split-Step Parabolic Equation (<code>PE</code>) transmission-loss curtain.
+              </div>
             </div>
             <div class="engine-meta-grid">
               <div>
@@ -566,6 +622,6 @@ int main(int argc, char** argv) {
     </div>
   </footer>
 
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=21"></script>
 </body>
 </html>
